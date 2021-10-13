@@ -538,7 +538,7 @@ if(login()){
                     }
     
                 }
-                // cardetails.innerHTML = snap.devices[0].reg_id;
+                cardetails.innerHTML = snap.devices[0].reg_id;
                 var timer = setTimeout(function () {
                     var deve = document.getElementById('pointer');
                     var sta = document.getElementById('status');
@@ -1123,6 +1123,7 @@ if(login()){
                 var cardetails = document.getElementById("cardetails");
                 var carname = document.getElementById("carname");
                 var canbus_cat = document.getElementById('namdbdaye');
+                var error_cdes = document.getElementById('namdbday');
                 var runningspeed = document.getElementById("runningspeed");
                 var throttleopeningwidth = document.getElementById("throttleopeningwidth");
                 var engineload = document.getElementById("engineload");
@@ -1174,6 +1175,33 @@ if(login()){
                 var namharshbrakingbar = document.getElementById("namharshbrakingbar");
                 var canbus_cards = document.getElementsByClassName('canbus');
                 var gaugeCharts = document.getElementsByClassName('gauge-charts');
+                var errcodno = document.getElementById('errcodno');
+                var er = document.getElementById('er');
+                var errecv = document.getElementById('errecv');
+                var carmd_make = document.getElementById('carmd_make');
+                var carmd_model = document.getElementById('carmd_model');
+                var carmd_year = document.getElementById('carmd_year');
+                var carmd_trans = document.getElementById('carmd_trans');
+                var carmd_manu = document.getElementById('carmd_manu');
+                var carmd_engine = document.getElementById('carmd_engine');
+                var carmd_mkmod = document.getElementById('carmd_mkmod');
+                var carmd_yr = document.getElementById('carmd_yr');
+                var carmd_mk = document.getElementById('carmd_mk');
+                var cooling_sys = document.getElementById('cooling_sys');
+                var engine_health = document.getElementById('engine_health');
+                var maint = document.getElementById('maint');
+                var power = document.getElementById('power');
+
+                var recvderr = document.getElementById('recvderr');
+                var recvderrcond = document.getElementById('recvderrcond');
+                var recvdsum = document.getElementById('recvdsum');
+                var difficulty = document.getElementById('difficulty');
+                var hours = document.getElementById('hours');
+                var labour_cst = document.getElementById('labour_cst');
+                var part_cst = document.getElementById('part_cst');
+                var total_cst = document.getElementById('total_cst');
+                var partnos = document.getElementById('partnos');
+                var partno = document.getElementById('partsno');
 
                 var gCharts = [];
                 // gaugeCharts.forEach(i => {
@@ -1700,6 +1728,113 @@ if(login()){
                     }
                 }
 
+                if(dve.carmd.decode !== undefined){
+                    carmd_make.innerText = dve.carmd.decode.make;
+                    carmd_model.innerText = dve.carmd.decode.model;
+                    carmd_year.innerText = dve.carmd.decode.year;
+                    carmd_trans.innerText = dve.carmd.decode.transmission;
+                    carmd_manu.innerText = dve.carmd.decode.manufacturer;
+                    carmd_engine.innerText = dve.carmd.decode.engine;
+                    carmd_mkmod.innerText = dve.carmd.decode.make + " " + dve.carmd.decode.model;
+                    carmd_yr.innerText = dve.carmd.decode.year;
+                    carmd_mk.innerText = dve.carmd.decode.make;
+                }
+                else{
+                    carmd_make.innerText = 'Not Set';
+                    carmd_model.innerText = 'Not Set';
+                    carmd_year.innerText = 'Not Set';
+                    carmd_trans.innerText = 'Not Set';
+                    carmd_manu.innerText = 'Not Set';
+                    carmd_engine.innerText = 'Not Set';
+                    carmd_mkmod.innerText = 'Not Set';
+                    carmd_yr.innerText = 'Not Set';
+                    carmd_mk.innerText = 'Not Set';
+                }
+                if(dve.carmd.repair !== undefined){
+                    recvderr.innerText = dve.carmd.repair.desc;
+                    recvderrcond.innerText = "Urgency: " + dve.carmd.repair.urgency;
+                    recvdsum.innerText = dve.carmd.repair.urgency_desc;
+                    difficulty.innerText = "Difficulty: " + dve.carmd.repair.difficulty;
+                    hours.innerText = "Hours: " + dve.carmd.repair.hours;
+                    labour_cst.innerText = "Est. Labour Cost: " + dve.carmd.repair.labor_cost;
+                    part_cst.innerText = "Est. Part Cost: " + dve.carmd.repair.part_cost;
+                    total_cst.innerText = "Est. Total Cost: " + dve.carmd.repair.total_cost;
+                    partnos.innerText = dve.carmd.repair.parts.length;
+                    var html_parts = '';
+                    for(var i = 0; i < dve.carmd.repair.parts.length; i++){
+                        
+                        html_parts += `<div class="col-lg-4"><div class="card card-body"><div class="d-flex flex-row"><div class="round round-lg align-self-center round-danger"><i class="mdi mdi-car-settings"></i></div><div class="m-l-10 align-self-center"><h3 class="m-b-0 font-light">`;
+                        html_parts += dve.carmd.repair.parts[i].desc;
+                        html_parts += `</h3><h5 class="text-muted m-b-0">`;
+                        html_parts +=  "$" + dve.carmd.repair.parts[i].price;
+                        html_parts += `</h5></div></div></div></div>`;
+                    }
+                    partsno.innerHTML = html_parts;
+
+                }
+                if(parseInt(dve.canbus.coolant_temp) > 100){
+                    cooling_sys.innerText = 'Needs Checking';
+                }
+                else{
+                    cooling_sys.innerText = 'Working Fine';
+                }
+                
+                
+          
+                
+
+                if(parseInt(dve.canbus.current_error_code_nos) >= 1){
+                    errcodno.innerHTML = dve.canbus.current_error_code_nos;
+                    var flty = document.getElementsByClassName('faulty');
+                    for(var i = 0; i < flty.length; i++){
+                        flty[i].style.display = 'block !important';
+                    }
+                    if(dve.error_code !== undefined){
+                        er.innerHTML = dve.error_code.split(',')[0];
+                        var elem_opti = document.createElement('option');
+                        elem_opti.value = dve.error_code.split(',')[0];
+                        elem_opti.innerHTML = dve.error_code.split(',')[0];
+                        error_cdes.innerHTML = elem_opti.selected;
+
+                        for(var i = 1; i < dve.error_code.split(',').length; i++){
+                            var elem_opt = document.createElement('option');
+                            elem_opt.value = dve.error_code.split(',')[i];
+                            elem_opt.innerHTML = dve.error_code.split(',')[i];
+                            error_cdes.innerHTML += elem_opt;
+                        }
+                        errecv.innerHTML = dve.canbus.date;
+                        engine_health.innerText = 'Not So Great';
+                        maint.innerText = 'Needed Urgently';
+                    }
+                    
+
+                    
+                    
+
+                }
+                else{
+                    engine_health.innerText = 'Okay'
+                    maint.innerText = ' This can wait';
+                    var flty = document.getElementsByClassName('faulty');
+                    for(var i = 0; i < flty.length; i++){
+                        flty[i].style.display = 'none' ;
+                    }
+                    recvderr.innerText = 'No Errors';
+                    recvderrcond.innerText = 0;
+                    recvdsum.innerText = 'Your Vehicle Seems Ok';
+                }
+
+                if(parseInt(dve.canbus.battery_voltage) < 10){
+                    power.innerText = 'Needs Checking';
+                }
+                else{
+                    power.innerText = 'All Good Here';
+                }
+
+
+                
+                
+                
                 
                 
 
@@ -2223,6 +2358,109 @@ if(login()){
                             };
                             break;
                         }
+                    }
+
+                    if(dve.carmd.decode !== undefined){
+                        carmd_make.innerText = dve.carmd.decode.make;
+                        carmd_model.innerText = dve.carmd.decode.model;
+                        carmd_year.innerText = dve.carmd.decode.year;
+                        carmd_trans.innerText = dve.carmd.decode.transmission;
+                        carmd_manu.innerText = dve.carmd.decode.manufacturer;
+                        carmd_engine.innerText = dve.carmd.decode.engine;
+                        carmd_mkmod.innerText = dve.carmd.decode.make + " " + dve.carmd.decode.model;
+                        carmd_yr.innerText = dve.carmd.decode.year;
+                        carmd_mk.innerText = dve.carmd.decode.make;
+                    }
+                    else{
+                        carmd_make.innerText = 'Not Set';
+                        carmd_model.innerText = 'Not Set';
+                        carmd_year.innerText = 'Not Set';
+                        carmd_trans.innerText = 'Not Set';
+                        carmd_manu.innerText = 'Not Set';
+                        carmd_engine.innerText = 'Not Set';
+                        carmd_mkmod.innerText = 'Not Set';
+                        carmd_yr.innerText = 'Not Set';
+                        carmd_mk.innerText = 'Not Set';
+                    }
+                    if(dve.carmd.repair !== undefined){
+                        recvderr.innerText = dve.carmd.repair.desc;
+                        recvderrcond.innerText = "Urgency: " + dve.carmd.repair.urgency;
+                        recvdsum.innerText = dve.carmd.repair.urgency_desc;
+                        difficulty.innerText = "Difficulty: " + dve.carmd.repair.difficulty;
+                        hours.innerText = "Hours: " + dve.carmd.repair.hours;
+                        labour_cst.innerText = "Est. Labour Cost: " + dve.carmd.repair.labor_cost;
+                        part_cst.innerText = "Est. Part Cost: " + dve.carmd.repair.part_cost;
+                        total_cst.innerText = "Est. Total Cost: " + dve.carmd.repair.total_cost;
+                        partnos.innerText = dve.carmd.repair.parts.length;
+                        var html_parts = '';
+                        for(var i = 0; i < dve.carmd.repair.parts.length; i++){
+                            
+                            html_parts += `<div class="col-lg-4"><div class="card card-body"><div class="d-flex flex-row"><div class="round round-lg align-self-center round-danger"><i class="mdi mdi-car-settings"></i></div><div class="m-l-10 align-self-center"><h3 class="m-b-0 font-light">`;
+                            html_parts += dve.carmd.repair.parts[i].desc;
+                            html_parts += `</h3><h5 class="text-muted m-b-0">`;
+                            html_parts +=  "$" + dve.carmd.repair.parts[i].price;
+                            html_parts += `</h5></div></div></div></div>`;
+                        }
+                        partsno.innerHTML = html_parts;
+    
+                    }
+                    if(parseInt(dve.canbus.coolant_temp) > 100){
+                        cooling_sys.innerText = 'Needs Checking';
+                    }
+                    else{
+                        cooling_sys.innerText = 'Working Fine';
+                    }
+                    
+                    
+              
+                    
+    
+                    if(parseInt(dve.canbus.current_error_code_nos) >= 1){
+                        errcodno.innerHTML = dve.canbus.current_error_code_nos;
+                        var flty = document.getElementsByClassName('faulty');
+                        for(var i = 0; i < flty.length; i++){
+                            flty[i].style.display = 'block !important';
+                        }
+                        if(dve.error_code !== undefined){
+                            er.innerHTML = dve.error_code.split(',')[0];
+                            var elem_opti = document.createElement('option');
+                            elem_opti.value = dve.error_code.split(',')[0];
+                            elem_opti.innerHTML = dve.error_code.split(',')[0];
+                            error_cdes.innerHTML = elem_opti.selected;
+    
+                            for(var i = 1; i < dve.error_code.split(',').length; i++){
+                                var elem_opt = document.createElement('option');
+                                elem_opt.value = dve.error_code.split(',')[i];
+                                elem_opt.innerHTML = dve.error_code.split(',')[i];
+                                error_cdes.innerHTML += elem_opt;
+                            }
+                            errecv.innerHTML = dve.canbus.date;
+                            engine_health.innerText = 'Not So Great';
+                            maint.innerText = 'Needed Urgently';
+                        }
+                        
+    
+                        
+                        
+    
+                    }
+                    else{
+                        engine_health.innerText = 'Okay'
+                        maint.innerText = ' This can wait';
+                        var flty = document.getElementsByClassName('faulty');
+                        for(var i = 0; i < flty.length; i++){
+                            flty[i].style.display = 'none' ;
+                        }
+                        recvderr.innerText = 'No Errors';
+                        recvderrcond.innerText = 0;
+                        recvdsum.innerText = 'Your Vehicle Seems Ok';
+                    }
+    
+                    if(parseInt(dve.canbus.battery_voltage) < 10){
+                        power.innerText = 'Needs Checking';
+                    }
+                    else{
+                        power.innerText = 'All Good Here';
                     }
                 
                     
