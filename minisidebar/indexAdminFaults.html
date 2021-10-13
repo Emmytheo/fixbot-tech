@@ -70,6 +70,9 @@
         #assets{
             overflow: hidden !important;
         }
+        .cars{
+                max-width: 80%;
+        }
         #atmcards{
             width: 100%;
             padding: 50px 10px;
@@ -164,6 +167,9 @@
             }
             #map{
                 height: 400px !important;
+            }
+            .cars{
+                max-width: 90%;
             }
             
         }
@@ -420,12 +426,12 @@
                         <!-- Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="./assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
+                                                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="./fixbotimg/avatar.svg" alt="user" class="profile-pic" /></a>
                                                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                                                 <ul class="dropdown-user">
                                                                     <li>
                                                                         <div class="dw-user-box">
-                                                                            <div class="u-img"><img src="./assets/images/users/1.jpg" alt="user"></div>
+                                                                            <div class="u-img"><img src="./fixbotimg/avatar.svg" alt="user"></div>
                                                                             <div class="u-text">
                                                                                 <h4>Steave Jobs</h4>
                                                                                 <p class="text-muted"><a href="https://www.wrappixel.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="43352231362d03242e222a2f6d202c2e">[email&#160;protected]</a></p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
@@ -609,83 +615,85 @@
                 <div class="row">
                     <!-- Column -->
                     <div class="col-lg-4 col-xlg-3 col-md-5">
-                        <div class="card">
+                        <div class="card" id="explorer">
                             <div class="card-body">
-                                <h3 class="card-title">Overall Health Status</h3>
-                                <h6 class="card-subtitle">See your Car's Health Status</h6>
-                                <!-- <div class="ml-auto row">
-                                    <select class="custom-select" style="width: 80%" id="namdbday">
-                                        <option selected>
-                                            <h1>Car 1</h1>
-                                        </option>
-                                        <option value="1">
-                                            <h1>Car 2</h1>
-                                        </option>
-                                        <option value="2">
-                                            <h1>Car 3</h1>
-                                        </option>
-                                        <option value="3">
-                                            <h1>Car 4</h1>
-                                        </option>
-                                    </select>
-                                    <div class="nav-item hidden-sm-down search-box">
-                                        <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i
-                                                class="ti-search"></i></a>
-                                        <form class="app-search">
-                                            <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i
-                                                    class="ti-close"></i></a> </form>
+                                <div class="d-flex flex-wrap">
+                                    <div>
+                                        <h3 class="card-title">Explore Assets</h3>
+                                        <h6 class="card-subtitle">See below for detailed Analytics</h6>
                                     </div>
-                                </div> -->
-                                <div id="visitor" style="height:260px; width:100%;"></div>
-                                <div class="card-body text-center ">
-                                    <ul class="m-b-0">
+                                    
+                                </div>
+                                <div class="profiletimeline">
+                                    <div class="sl-item">
+                                        <div class="sl-left"> <img src="./fixbotimg/avatar.svg" alt="user" class="img-circle assistantpic" /> </div>
+                                        <div class="sl-right">
+                                            <div><a href="#" class="link">Fixbot Assistant</a>
+                                                <p>Here are all your Registered<a href="#"> Assets</a></p>
+                        
+                        
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="" >
+                                                            <h6 class="text-muted text-success d-flex flex-row" style=" position: relative; float: right; ">
+                                                                <div style="width: 20px; height:20px; border-radius: 50px;" id="pointer"></div>
+                                                            <div style="margin: 0px 10px" id="status">Status Unknown</div></h6>
+                                                            <br>
+                                                            <img src="./fixbotimg/car.jpg" id="carpic" style="width: 100%; display: none; max-height: 250px;  margin: 10px;" alt="">
+                                                        </div>
+                                                        
+                                                        <div class="d-flex flex-row">
+                                                            
+                                                            <div class="round round-lg align-self-center round-info"><i class="mdi mdi-car"></i>
+                                                            </div>
+                                                            <div class="m-l-10 align-self-center">
+                                                                <h3 class="m-b-0 font-light" id="carname">Unknown</h3>
+                                                                <h5 class="text-muted m-b-0" id="cardetails">Loading...</h5>
+                                                            </div>
+                                                            
+                                                            
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <select class="custom-select form-control pull-right">
+                                                    <option selected="">Change Car</option>
+                                                    <option value="1">car 2</option>
+                                                    <option value="2">car 3</option>
+                                                    <option value="3">car 4</option>
+                                                    <option value="4">car 5</option>
+                                                </select>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                                            </div>
+                                            
+                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ml-auto align-self-center">
+                                    <ul class="list-inline m-b-0" id="namtrack">
                                         <li>
-                                            <h6 class="text-muted  text-primary"><i class="fa fa-circle font-10 m-r-10"></i>Fault Diagnoses</h6>
+                                            <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Engine Activity</h6>
                                         </li>
                                         <li>
-                                            <h6 class="text-muted  text-success"><i class="fa fa-circle font-10 m-r-10"></i>Asset Tracking</h6>
-                                        </li>
-                                        <li>
-                                            <h6 class="text-muted  text-success"><i class="fa fa-circle font-10 m-r-10"></i>API</h6>
+                                            <h6 class="text-muted text-info"><i class="fa fa-circle font-10 m-r-10"></i>Driving Activity</h6>
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
-                            <div>
-                                <hr class="m-t-0 m-b-0">
-                            </div>
-                            <div class="card-body text-center ">
-                                <ul class="list-inline m-b-0">
-                                    <!-- <li>
-                                        <h6 class="text-muted  text-primary"><i class="fa fa-circle font-10 m-r-10"></i>Fault Diagnoses</h6>
-                                    </li> -->
-                                    <li>
-                                        <h6 class="text-muted  text-success"><i class="fa fa-circle font-10 m-r-10"></i>See More</h6>
-                                    </li>
-                                    <!-- <li>
-                                        <h6 class="text-muted  text-success"><i class="fa fa-circle font-10 m-r-10"></i>API</h6>
-                                    </li> -->
-                                </ul>
+                        
                             </div>
                         </div>
-                        <!-- <div class="card">
-                            <div class="card-body">
-                                <center class="m-t-30"> <img id="profpic" src="./assets/images/users/5.jpg" class="img-circle" width="150" />
-                                    <h4 class="card-title m-t-10 " id="usnm">Username</h4>
-                                    <h4 class="card-subtitle" id="role">Role</h4>
                         
-                                </center>
-                            </div>
-                        
-                        </div> -->
-                        
-
-
-
-                        
-                        
-                        
-                        <!-- Swiper -->
                         
                         
                         <div class="card biggie">
@@ -785,9 +793,39 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="blog-widget card-body">
+                            <div class="card">
+                                <div class="card-body d-flex flex-wrap"  >
+                                    <div class="card" style="height: 150px; width: 40%; top: -50px; position: relative;">
+                                        
+                                    </div>
+                                    <div class="card-body float-end" >
+                                        <h3 id="">Current Location</h3>
+                                        <label class="label label-rounded label-success" id="">Unknown</label>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                <div class="card-body d-flex flex-wrap" style=" padding: 0px 15px; top: -70px; position: relative;">
+                                    <p class="m-t-20 m-b-20" id="">
+                                        Loading Message...
+                                    </p>
+                                </div>
+                                
+                                
+                                
+                                
+                            </div>
+                            
+                            
+                        </div>
                         
                         
                     </div>
+
+                    
+
 
                     <!-- Column -->
                     
@@ -807,7 +845,7 @@
                         
                         
                             </div>
-                            <div class="col-lg-3 col-md-4">
+                            <div class="col-lg-3 col-md-12 col-sm-12" style="display: none;">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="d-flex flex-row flex-wrap">
@@ -816,29 +854,311 @@
                                             <div class="m-l-10 align-self-center">
                                 
                                                 <h3 class="m-b-0 font-light" >CAR 1</h3>
-                                                <!-- <h4 class="m-b-0 font-light" id="sngnamdet"></h4> -->
+                                                
                                                 <h5 class="text-muted m-b-0" id="sngnam"><i class="fa fa-check text-success"></i>Healthy</h5>
-                                                <!-- <h5 class="text-muted m-b-0" id="sngnamcond"><i class="fa fa-check text-success"></i>Healthy</h5> -->
+                                                
                                             </div>
                                 
                                         </div>
                                 
-                                        <!-- <div class="ml-auto row">
-                                                                        <select class="custom-select col-lg-2 col-md-4" style="width:90%" id="namdbday">
-                                                                            <option selected>Today</option>
-                                                                            <option value="1">Yesterday</option>
-                                                                            <option value="2">2 Days Ago</option>
-                                                                            <option value="3">Other</option>
-                                                                        </select>
-                                                                        <div class="nav-item hidden-sm-down search-box">
-                                                                            <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i
-                                                                                    class="ti-search"></i></a>
-                                                                            <form class="app-search">
-                                                                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i
-                                                                                        class="ti-close"></i></a> </form>
-                                                                        </div>
-                                                                    </div> -->
+                                        
                                 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <div class="card-body">
+                                        <center>
+                                            <!-- CAROUSEL -->
+                                            <div id="carouselExampleControls" class="carousel slide card cars" data-ride="carousel">
+                                                <div class="carousel-inner" role="listbox">
+                                                    <div class="carousel-item active">
+                                                        <div class="container"> <img class="d-block img-fluid" style="width: 100%;" src="./fixbotimg/car.jpg"
+                                                                alt="First slide"></div>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <div class="container"><img class="d-block img-fluid" style="width: 100%;" src="./fixbotimg/car.jpg"
+                                                                alt="Second slide"></div>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <div class="container"><img class="d-block img-fluid" style="width: 100%;" src="./fixbotimg/car.jpg"
+                                                                alt="Third slide"></div>
+                                                    </div>
+                                                </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+                                                        class="sr-only">Previous</span> </a>
+                                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span> <span
+                                                        class="sr-only">Next</span> </a>
+                                            </div>
+                                            <div class="card-body">
+                                                <center>
+                                                    <div class="d-flex flex-row flex-wrap">
+                                                        <div class="round round-lg align-self-center round-info"><i class="mdi mdi-car"></i>
+                                                        </div>
+                                                        <div class="m-l-10 align-self-center">
+                                            
+                                                            <h3 class="m-b-0 font-light" >Toyota Corolla S</h3>
+                                                            <span class="d-flex flex-row flex-wrap">
+                                                                <h5 class="text-muted m-b-0" style="margin: 0px 20px ;" id="sngnam">2015</h5>
+                                                                
+                                                                <h5 class="text-muted m-b-0" id="sngnam">Toyota 4WD</h5>
+                                                            </span>
+                                                            
+                                                            
+                                                        </div>
+                                                        
+                                            
+                                                    </div>
+                                                </center>
+                                                
+                                                
+                                        
+                                            </div>
+                                        </center>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-12 col-sm-12">
+                                    <div class=" card-body " style="justify-content: center; ">
+                                        <ul  class="nav nav-tabs profile-tab" role="tablist">
+                                            <!-- <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Overview</a>
+                                            </li> -->
+                                            
+                                            <li class="nav-item"> <a class="nav-link"  data-toggle="tab" href="#overview" role="tab">Overview</a>
+                                            </li>
+                                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#healthstats" role="tab">Health Stats</a> </li>
+                                            
+                                            </li>
+                                            
+                                            
+                                
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane" id="overview" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-12 card-body">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item card">
+                                                            <div class="card-body">
+                                                                <div class="d-flex flex-row">
+                                                            
+                                                                    
+                                                                    <div class="m-l-10 align-self-center">
+                                                                        <h3 class="m-b-0 font-light" id="carname">Make</h3>
+                                                                        <h5 class="text-muted m-b-0" id="cardetails">Loading...</h5>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+    
+                                                        </li>
+                                                        <li class="list-group-item card ">
+                                                            <div class="card-body">
+                                                                <div class="d-flex flex-row">
+                                                            
+                                                                    
+                                                                    <div class="m-l-10 align-self-center">
+                                                                        <h3 class="m-b-0 font-light" id="carname">Model</h3>
+                                                                        <h5 class="text-muted m-b-0" id="cardetails">Loading...</h5>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+    
+                                                        </li>
+                                                        
+    
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12 card-body">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item card ">
+                                                            <div class="card-body">
+                                                                <div class="d-flex flex-row">
+                                                            
+                                                                    
+                                                                    <div class="m-l-10 align-self-center">
+                                                                        <h3 class="m-b-0 font-light" id="carname">Year</h3>
+                                                                        <h5 class="text-muted m-b-0" id="cardetails">Loading...</h5>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+    
+                                                        </li>
+                                                        <li class="list-group-item card ">
+                                                            <div class="card-body">
+                                                                <div class="d-flex flex-row">
+                                                            
+                                                                    
+                                                                    <div class="m-l-10 align-self-center">
+                                                                        <h3 class="m-b-0 font-light" id="carname">VIN</h3>
+                                                                        <h5 class="text-muted m-b-0" id="cardetails">Loading...</h5>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+    
+                                                        </li>
+                                                        
+    
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12 card-body">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item card ">
+                                                            <div class="card-body">
+                                                                <div class="d-flex flex-row">
+                                                            
+                                                                    
+                                                                    <div class="m-l-10 align-self-center">
+                                                                        <h3 class="m-b-0 font-light" id="carname">Transmission</h3>
+                                                                        <h5 class="text-muted m-b-0" id="cardetails">Loading...</h5>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+    
+                                                        </li>
+                                                        <li class="list-group-item card ">
+                                                            <div class="card-body">
+                                                                <div class="d-flex flex-row">
+                                                            
+                                                                    
+                                                                    <div class="m-l-10 align-self-center">
+                                                                        <h3 class="m-b-0 font-light" id="carname">Serviced</h3>
+                                                                        <h5 class="text-muted m-b-0" id="cardetails">Loading...</h5>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+    
+                                                        </li>
+                                                        
+    
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            
+                                            
+
+                                        </div>
+                                        <div class="tab-pane active" id="healthstats" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-12 card-body ">
+                                                    <ul class="list-group" >
+                                                        <li class="list-group-item card" >
+                                                            <div class="card-body" style="height: 230px">
+                                                                <div class="d-flex flex-row">
+                                                            
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+    
+                                                        </li>
+                                                        
+                                                        
+    
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12 card-body">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item card ">
+                                                            <div class="card-body">
+                                                                <div class="d-flex flex-row">
+                                                            
+                                                                    
+                                                                    <div class="m-l-10 align-self-center">
+                                                                        <h3 class="m-b-0 font-light" id="carname">Cooling Systems</h3>
+                                                                        <h5 class="text-muted m-b-0" id="cardetails">Loading...</h5>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+    
+                                                        </li>
+                                                        <li class="list-group-item card ">
+                                                            <div class="card-body">
+                                                                <div class="d-flex flex-row">
+                                                            
+                                                                    
+                                                                    <div class="m-l-10 align-self-center">
+                                                                        <h3 class="m-b-0 font-light" id="carname">Engine Health</h3>
+                                                                        <h5 class="text-muted m-b-0" id="cardetails">Loading...</h5>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+    
+                                                        </li>
+                                                        
+    
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12 card-body">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item card ">
+                                                            <div class="card-body">
+                                                                <div class="d-flex flex-row">
+                                                            
+                                                                    
+                                                                    <div class="m-l-10 align-self-center">
+                                                                        <h3 class="m-b-0 font-light" id="carname">Maintenance</h3>
+                                                                        <h5 class="text-muted m-b-0" id="cardetails">Loading...</h5>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+    
+                                                        </li>
+                                                        <li class="list-group-item card ">
+                                                            <div class="card-body">
+                                                                <div class="d-flex flex-row">
+                                                            
+                                                                    
+                                                                    <div class="m-l-10 align-self-center">
+                                                                        <h3 class="m-b-0 font-light" id="carname">Power</h3>
+                                                                        <h5 class="text-muted m-b-0" id="cardetails">Loading...</h5>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    
+                                                                </div>
+                                                            </div>
+    
+                                                        </li>
+                                                        
+    
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -847,18 +1167,16 @@
                             <!-- Nav tabs -->
                             <div class=" card " style="justify-content: center; ">
                                 <ul  class="nav nav-tabs profile-tab" role="tablist">
-                                    <!-- <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Overview</a>
-                                    </li> -->
+                                    
                                     
                                     <li class="nav-item"> <a class="nav-link active"  data-toggle="tab" href="#settings" role="tab">Faults</a>
                                     </li>
-                                    <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#location" role="tab">Location</a> </li> -->
+                                    
                                     <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#drivingb" role="tab">Stats</a>
                                     </li>
                                     <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Engine Data</a> </li>
-                                    <!-- <li class="nav-item"> <a class="nav-link " data-toggle="tab" href="#alarms" role="tab">Reminders</a> </li> -->
-                                    <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#cpanel" role="tab">Control Panel</a>
-                                    </li> -->
+                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#analytics" role="tab">Analytics</a> </li>
+                                    
                         
                                 </ul>
                             </div>
@@ -876,8 +1194,7 @@
                                             <h3 class="card-title">Faults Codes</h3>
                                             <h6 class="card-subtitle">See below for detailed Analytics</h6>
                                         </div>
-                                        <!-- <h4 class="card-title">Faults Codes</h4> -->
-                                        <!-- <h6 class="card-subtitle">Recent Faults Codes from your car</h6> -->
+                                        
                                     </div>
                                     <div class="profiletimeline">
                                         <div class="sl-item">
@@ -1036,76 +1353,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="col-lg-4 col-xlg-3 col-md-5">
-                                            <div class="card"> <img class="card-img" src="./assets/images/background/socialbg.jpg" alt="Card image">
-                                                <div class="card-img-overlay card-inverse social-profile d-flex ">
-                                                    <div class="align-self-center"> <img src="./assets/images/users/1.jpg" alt="user" class="img-circle"
-                                                            width="100">
-                                                        <h4 class="card-title">James Anderson</h4>
-                                                        <h6 class="card-subtitle">@jamesandre</h6>
-                                                        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                            tempor
-                                                            incididunt </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
+                                        
                                     </div>
                                     
-                                    <!-- ============================================================== -->
-                                    <!-- Comment widgets -->
-                                    <!-- ============================================================== -->
-                                    <!-- <div class="comment-widgets card card-body">
-                                        <div class="d-flex flex-row comment-row" id="error_code">
-                                            <div class="p-2"><span class="round">EX</span></div>
-                                            <div class="comment-text w-100">
-                                                <h5>Clogging of Exhaust Pipe (C0139)</h5>
-                                                <p class="m-b-5">Lorem Ipsum is simply dummy text of the printing and type
-                                                    setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the
-                                                    printing and type setting industry.</p>
-                                                <div class="comment-footer"> <span class="text-muted pull-right">July 14,
-                                                        2020</span> <span class="label label-info">Fixed</span> <span class="action-icons">
-                                                        <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
-                                                        <a href="javascript:void(0)"><i class="ti-check"></i></a>
-                                                        <a href="javascript:void(0)"><i class="ti-heart"></i></a>
-                                                    </span> </div>
-                                            </div>
-                                        </div>
-                        
-                                    </div> -->
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="d-flex flex-wrap">
-                                                <div>
-                                                    <h3 class="card-title">Frequency of Occurrence Chart</h3>
-                                                    <h6 class="card-subtitle">Review this fault's Rate of Occurrence</h6>
-                                                </div>
-                                                <div class="ml-auto align-self-center">
-                                                    <ul class="list-inline m-b-0">
-                                                        <li>
-                                                            <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Open Rate</h6>
-                                                        </li>
-                                                        <li>
-                                                            <h6 class="text-muted text-info"><i class="fa fa-circle font-10 m-r-10"></i>Recurring Payments
-                                                            </h6>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="campaign ct-charts"></div>
-                                            <div class="row text-center">
-                                                <div class="col-lg-4 col-md-4 m-t-20">
-                                                    <h1 class="m-b-0 font-light">5098</h1><small>Total Sent</small>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 m-t-20">
-                                                    <h1 class="m-b-0 font-light">4156</h1><small>Mail Open Rate</small>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 m-t-20">
-                                                    <h1 class="m-b-0 font-light">1369</h1><small>Click Rate</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     
                                 </div>
                                 <div class="tab-pane" id="profile" role="tabpanel">
@@ -1114,16 +1365,16 @@
                                             <div>
                                                 <h2 class="card-title">Engine Data</h3>
                                                     <h6 class="card-subtitle">Showing the Data for</h6>
-                                                    <select class="custom-select" id="namdbday">
-                                                        <option selected>Fuel Consumption</option>
-                                                        <option value="1">Temperature Readings</option>
-                                                        <option value="2">Driving Speed and Range</option>
-                                                        <option value="3">Power and Others</option>
+                                                    <select class="custom-select" id="namdbdaye" onchange="set_canbus(this)">
+                                                        <option value="fuel_con" selected>Fuel Consumption</option>
+                                                        <option value="temp_read" >Temperature Readings</option>
+                                                        <option value="driv_spd" >Driving Speed and Range</option>
+                                                        <option value="power_others">Power and Others</option>
                                                     </select>
                                                     <br><br>
                                             </div>
                                             <br>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 driv_spd canbus">
                                                 <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1136,13 +1387,16 @@
                                                             <label class="label label-rounded label-success" id="sngnamcond">Normal</label>
                                                         </div>
                                                         <!-- Column -->
-                                                        <div id="runningspeedbar" class="col text-right align-self-center">
+                                                        <!-- <div id="runningspeedbar" class="col text-right align-self-center">
                                                             <div data-label="0%" class="css-bar m-b-0 css-bar-info css-bar-0"></div>
+                                                        </div> -->
+                                                        <div class="ml-auto">
+                                                            <div class="gauge-charts" style=" width:150px; height:150px;"></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 power_others canbus">
                                                 <div class="card card-body" onclick="changeBarlog('ENGINE SPEED(RPM)', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1161,7 +1415,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 power_others canbus">
                                                 <div class="card card-body" onclick="changeBarlog('RUNNING SPEED', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1180,7 +1434,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 temp_read canbus">
                                                 <div class="card card-body" onclick="changeBarlog('THROTTLE OPENING WIDTH', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1199,7 +1453,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 fuel_con canbus">
                                                 <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1218,7 +1472,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 fuel_con canbus">
                                                 <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1237,7 +1491,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 driv_spd canbus">
                                                 <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1250,13 +1504,16 @@
                                                             <label class="label label-rounded label-success" id="sngnamcond">Normal</label>
                                                         </div>
                                                         <!-- Column -->
-                                                        <div id="drivingrangebar" class="col text-right align-self-center">
+                                                        <!-- <div id="drivingrangebar" class="col text-right align-self-center">
                                                             <div data-label="0%" class="css-bar m-b-0 css-bar-info css-bar-0"></div>
+                                                        </div> -->
+                                                        <div class="ml-auto">
+                                                            <div class="gauge-charts" style=" width:150px; height:150px;"></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 driv_spd canbus">
                                                 <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1269,13 +1526,16 @@
                                                             <label class="label label-rounded label-success" id="sngnamcond">Normal</label>
                                                         </div>
                                                         <!-- Column -->
-                                                        <div id="totalmileagebar" class="col text-right align-self-center">
+                                                        <!-- <div id="totalmileagebar" class="col text-right align-self-center">
                                                             <div data-label="0%" class="css-bar m-b-0 css-bar-info css-bar-0"></div>
+                                                        </div> -->
+                                                        <div class="ml-auto">
+                                                            <div class="gauge-charts" style=" width:150px; height:150px;"></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 fuel_con canbus">
                                                 <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1294,7 +1554,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 fuel_con canbus">
                                                 <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1313,7 +1573,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 power_others canbus">
                                                 <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1332,7 +1592,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 power_others canbus">
                                                 <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1351,7 +1611,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 power_others canbus">
                                                 <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1370,7 +1630,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 power_others canbus">
                                                 <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1389,7 +1649,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-lg-3">
+                                            <div class="col-md-6 col-lg-3 driv_spd canbus">
                                                 <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                                                     <!-- Row -->
                                                     <div class="row">
@@ -1402,8 +1662,11 @@
                                                             <label class="label label-rounded label-success" id="sngnamcond">Normal</label>
                                                         </div>
                                                         <!-- Column -->
-                                                        <div id="enginespeedbar" class="col text-right align-self-center">
+                                                        <!-- <div id="enginespeedbar" class="col text-right align-self-center">
                                                             <div data-label="0%" class="css-bar m-b-0 css-bar-info css-bar-0"></div>
+                                                        </div> -->
+                                                        <div class="ml-auto">
+                                                            <div class="gauge-charts" style=" width:150px; height:150px;"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1588,6 +1851,41 @@
                                     </div>
                         
                                 </div>
+                                <div class="tab-pane" id="analytics" role="tabpanel">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex flex-wrap">
+                                                <div>
+                                                    <h3 class="card-title">Frequency of Occurrence Chart</h3>
+                                                    <h6 class="card-subtitle">Review this fault's Rate of Occurrence</h6>
+                                                </div>
+                                                <div class="ml-auto align-self-center">
+                                                    <ul class="list-inline m-b-0">
+                                                        <li>
+                                                            <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Open Rate</h6>
+                                                        </li>
+                                                        <li>
+                                                            <h6 class="text-muted text-info"><i class="fa fa-circle font-10 m-r-10"></i>Recurring Payments
+                                                            </h6>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="campaign ct-charts"></div>
+                                            <div class="row text-center">
+                                                <div class="col-lg-4 col-md-4 m-t-20">
+                                                    <h1 class="m-b-0 font-light">5098</h1><small>Total Sent</small>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 m-t-20">
+                                                    <h1 class="m-b-0 font-light">4156</h1><small>Mail Open Rate</small>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 m-t-20">
+                                                    <h1 class="m-b-0 font-light">1369</h1><small>Click Rate</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 
                                
                         
@@ -1712,29 +2010,11 @@
     </script>
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <!-- Initialize Swiper -->
-    <!-- <script>
-        var swiper = new Swiper('.swiper-container', {
-                effect: 'coverflow',
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: 'auto',
-                coverflowEffect: {
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 500,
-                    modifier: 1,
-                    slideShadows: true,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                },
-            });
-    </script> -->
+    
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
-    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script> -->
+    
     
     <!-- ============================================================== -->
     <!-- All Jquery -->
