@@ -1201,7 +1201,9 @@ if(login()){
                 var part_cst = document.getElementById('part_cst');
                 var total_cst = document.getElementById('total_cst');
                 var partnos = document.getElementById('partnos');
-                var partno = document.getElementById('partsno');
+                var partsno = document.getElementById('partsno');
+                var healthStats = document.getElementById('healthStatus');
+
 
                 var gCharts = [];
                 // gaugeCharts.forEach(i => {
@@ -1297,6 +1299,7 @@ if(login()){
                 namengrotationbar.innerText = "Normal";
                 namharshaccelbar.innerText = "Normal";
                 namharshbrakingbar.innerText = "Normal";
+                
                 
                 switch(canbus_cat.value){
                     case 'fuel_con': {
@@ -1727,7 +1730,7 @@ if(login()){
                         break;
                     }
                 }
-
+                var healthStatus = 100;
                 if(dve.carmd.decode !== undefined){
                     carmd_make.innerText = dve.carmd.decode.make;
                     carmd_model.innerText = dve.carmd.decode.model;
@@ -1751,6 +1754,7 @@ if(login()){
                     carmd_mk.innerText = 'Not Set';
                 }
                 if(dve.carmd.repair !== undefined){
+                    healthStatus -= 15;
                     recvderr.innerText = dve.carmd.repair.desc;
                     recvderrcond.innerText = "Urgency: " + dve.carmd.repair.urgency;
                     recvdsum.innerText = dve.carmd.repair.urgency_desc;
@@ -1774,6 +1778,7 @@ if(login()){
                 }
                 if(parseInt(dve.canbus.coolant_temp) > 100){
                     cooling_sys.innerText = 'Needs Checking';
+                    healthStatus -= 15;
                 }
                 else{
                     cooling_sys.innerText = 'Working Fine';
@@ -1784,6 +1789,7 @@ if(login()){
                 
 
                 if(parseInt(dve.canbus.current_error_code_nos) >= 1){
+                    healthStatus -= 10;
                     errcodno.innerHTML = dve.canbus.current_error_code_nos;
                     var flty = document.getElementsByClassName('faulty');
                     for(var i = 0; i < flty.length; i++){
@@ -1825,11 +1831,37 @@ if(login()){
                 }
 
                 if(parseInt(dve.canbus.battery_voltage) < 10){
+                    healthStatus -= 5;
                     power.innerText = 'Needs Checking';
                 }
                 else{
                     power.innerText = 'All Good Here';
                 }
+
+                if(healthStatus > 70 && healthStatus <= 100){
+                    healthStats.innerText = 'Healthy ' + healthStatus + '%';
+                }
+                else if(healthStatus > 50 && healthStatus <= 70){
+                    healthStats.innerText = 'Not So Good ' + healthStatus + '%';
+                }
+                else if(healthStatus > 30 && healthStatus <= 50){
+                    healthStats.innerText = 'Bad ' + healthStatus + '%';
+                }
+                else{
+                    healthStats.innerText = 'Terrible ' + healthStatus + '%';
+                }
+                
+                
+                console.log(healthStatus);
+                new Chartist.Pie('.ct-chart', {
+                    series: [healthStatus, 100-healthStatus]
+                }, {
+                    donut: true
+                    , donutWidth: 20
+                    , startAngle: 0
+                    , showLabel: false
+                });
+                
 
 
                 
@@ -2360,6 +2392,7 @@ if(login()){
                         }
                     }
 
+                    var healthStatus = 100;
                     if(dve.carmd.decode !== undefined){
                         carmd_make.innerText = dve.carmd.decode.make;
                         carmd_model.innerText = dve.carmd.decode.model;
@@ -2383,6 +2416,7 @@ if(login()){
                         carmd_mk.innerText = 'Not Set';
                     }
                     if(dve.carmd.repair !== undefined){
+                        healthStatus -= 15;
                         recvderr.innerText = dve.carmd.repair.desc;
                         recvderrcond.innerText = "Urgency: " + dve.carmd.repair.urgency;
                         recvdsum.innerText = dve.carmd.repair.urgency_desc;
@@ -2406,6 +2440,7 @@ if(login()){
                     }
                     if(parseInt(dve.canbus.coolant_temp) > 100){
                         cooling_sys.innerText = 'Needs Checking';
+                        healthStatus -= 15;
                     }
                     else{
                         cooling_sys.innerText = 'Working Fine';
@@ -2416,6 +2451,7 @@ if(login()){
                     
     
                     if(parseInt(dve.canbus.current_error_code_nos) >= 1){
+                        healthStatus -= 10;
                         errcodno.innerHTML = dve.canbus.current_error_code_nos;
                         var flty = document.getElementsByClassName('faulty');
                         for(var i = 0; i < flty.length; i++){
@@ -2457,11 +2493,38 @@ if(login()){
                     }
     
                     if(parseInt(dve.canbus.battery_voltage) < 10){
+                        healthStatus -= 5;
                         power.innerText = 'Needs Checking';
                     }
                     else{
                         power.innerText = 'All Good Here';
                     }
+    
+                    if(healthStatus > 70 && healthStatus <= 100){
+                        healthStats.innerText = 'Healthy ' + healthStatus + '%';
+                    }
+                    else if(healthStatus > 50 && healthStatus <= 70){
+                        healthStats.innerText = 'Not So Good ' + healthStatus + '%';
+                    }
+                    else if(healthStatus > 30 && healthStatus <= 50){
+                        healthStats.innerText = 'Bad ' + healthStatus + '%';
+                    }
+                    else{
+                        healthStats.innerText = 'Terrible ' + healthStatus + '%';
+                    }
+                    
+                    
+                    console.log(healthStatus);
+                    new Chartist.Pie('.ct-chart', {
+                        series: [healthStatus, 100-healthStatus]
+                    }, {
+                        donut: true
+                        , donutWidth: 20
+                        , startAngle: 0
+                        , showLabel: false
+                    });
+
+                    
                 
                     
                     
