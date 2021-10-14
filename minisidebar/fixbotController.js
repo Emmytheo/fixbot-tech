@@ -558,7 +558,7 @@ if(login()){
                     center: { lat: 10, lng: 10 },
                     zoom: 8,
                 });
-                mark = new google.maps.Marker({ position: { lat: dve.location.latitude, lng: dve.location.longitude }, map: map });
+                mark = new google.maps.Marker({ position: { lat: dve.location.latitude, lng: dve.location.longitude }, map: map, animation: google.maps.Animation.DROP });
                 var latLng = new google.maps.LatLng(dve.location.latitude, dve.location.longitude); //Makes a latlng
                 map.panTo(latLng);
                 map.addListener("center_changed", () => {
@@ -918,7 +918,7 @@ if(login()){
                         
                         
                         
-                        `<h3><strong>Speed: </strong>${dve.canbus.runningspeed}</h3>`+
+                        `<h3><strong>Speed: </strong>${dve.canbus.running_speed}</h3>`+
                         `<h3><strong>Battery Voltage: </strong>${dve.canbus.battery_voltage}</h3>`+
                         `<h3><strong>Fuel Level: </strong>${dve.canbus.coolant_temp}</h3>`+
                         `<h3>See your Details @, <a href="https://myfixbot.com/indexAdminFaults">here</a> </h3>` 
@@ -934,7 +934,7 @@ if(login()){
                 const infowindow = new google.maps.InfoWindow({
                     content: contentString,
                 });
-                mark = new google.maps.Marker({ position: { lat: dve.location.latitude, lng: dve.location.longitude }, map: map });
+                mark = new google.maps.Marker({ position: { lat: dve.location.latitude, lng: dve.location.longitude }, map: map, animation: google.maps.Animation.DROP});
                 var latLng = new google.maps.LatLng(dve.location.latitude, dve.location.longitude); //Makes a latlng
 
                 map.panTo(latLng);
