@@ -1064,7 +1064,7 @@ if(login()){
                             
                             
                             
-                            `<p><strong>Speed: </strong>${dve.canbus.runningspeed}</p>`+
+                            `<p><strong>Speed: </strong>${dve.canbus.running_speed}</p>`+
                             `<p><strong>Battery Voltage: </strong>${dve.canbus.battery_voltage}</p>`+
                             `<p><strong>Fuel Level: </strong>${dve.canbus.coolant_temp}</p>`+
                             '<p>See your Details @, <a href="https://myfixbot.com/indexAdminFaults">' 
