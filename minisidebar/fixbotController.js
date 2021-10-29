@@ -11,6 +11,8 @@ const socket = io('https://server.myfixbot.com', {
 // with hooks and authentication.
 const client = feathers();
 var user = '';
+var cords = [];
+var poly;
 var dve;
 var acc_data = '';
 var myData = {};
@@ -185,7 +187,7 @@ const login = async credentials => {
         switch(error.name){
             case 'NotAuthenticated': {
                 // window.location.assign("pages-login.html.htm");
-                if(document.getElementById('note') == undefined){
+                if(document.getElementById('note') !== undefined){
                     document.getElementById('note').innerHTML = error.message;
                 }
                 
@@ -528,6 +530,7 @@ if(login()){
                 var namharshaccelbar = document.getElementById("namharshaccelbar");
                 var namharshbrakingbar = document.getElementById("namharshbrakingbar");
                 var map = document.getElementById("map");
+                
                 var weekly = [];
                 for (it in nam) {                        
                     if (snap !== undefined) {
@@ -713,17 +716,27 @@ if(login()){
                 recvdsum.innerHTML = "Please wait while our system checks your car for faults..."
                 // console.log(dat);
                 client.service('dbapi').on('value', function(dat){
-                    dve = dat.devices[0]["Device data"];
-                    console.log(dat);
                     clearTimeout(timer);
                     var dev = document.getElementById('pointer');
                     var stat = document.getElementById('status');
                     dev.style.background = "green";
-                    stat.innerText = "Online";
+                    
+                    if((dve.canbus.location.latitude !== dat.devices[0]["Device data"].canbus.location.latitude || dve.canbus.location.longitude !== dat.devices[0]["Device data"].canbus.location.longitude) == true || parseInt(dat.devices[0]["Device data"].canbus.running_speed) !== 0){
+                        stat.innerText = "Online and Moving";
+                    }
+                    else{
+                        stat.innerText = "Online and Not Moving";
+                    }
+                    
+                    
                     timer = setTimeout(function (){
                         dev.style.background = "grey";
                         stat.innerText = "Offline";
                     }, 10000);
+                    console.log(dat);
+                    
+                    
+                    dve = dat.devices[0]["Device data"];
                     recvderr.innerHTML = "No Faults Found";
                     recvderrcond.innerHTML = "Okay";
                     recvdsum.innerHTML = "Your Car is currently fault free, Carry on and Drive Safely."
@@ -743,7 +756,7 @@ if(login()){
                         map.setZoom(15);
                         map.setCenter(latLng);
                     });
-                    runningspeed.innerText = dve.canbus.runningspeed;
+                    runningspeed.innerText = dve.canbus.running_speed;
                     coolanttemperature.innerText = dve.canbus.coolant_temp;
                     totalfuelconsumptionvol.innerText = dve.canbus.total_fuel_consumption_vol;
                     batteryvoltage.innerText = dve.canbus.battery_voltage;
@@ -815,7 +828,7 @@ if(login()){
                                     }
                                 }
                                 , data: [{
-                                    value: parseInt(dve.canbus.runningspeed), 
+                                    value: parseInt(dve.canbus.running_speed), 
                                     name: 'Speed'
                                 }]
                             }
@@ -898,6 +911,12 @@ if(login()){
                     center: { lat: 10, lng: 10 },
                     zoom: zoom,
                 });
+                poly = new google.maps.Polyline({
+                    strokeColor: "#000000",
+                    strokeOpacity: 1.0,
+                    strokeWeight: 3,
+                });
+                poly.setMap(map);
                 
                 const contentString =
                     '<div style="max-width: 400px ">' +
@@ -965,79 +984,110 @@ if(login()){
 
                 });
 
-                console.log(snap);
+                map.addListener("click", addLatLng);
+                
+                data = dve.logs;
+                var positio = [];
+                var cnt = 0;
+                loci = {};
+                loc = [];
+                
+                for (i in data){
+                    cnt++;
+                    if(cnt < 10){
+                        if(data[i].data.action == 'ping'){
+                            
+                            // insrt(loci, [
+                            //     data[i].date.split(' ')[2],
+                            //     data[i].date.split(' ')[1],
+                            //     data[i].date.split(' ')[0],
+                            //     data[i].time.split(':')[0],
+                            //     data[i].time.split(':')[1],
+                            //     data[i].time.split(':')[2]
+                            // ], {
+                            //     lat: data[i].data.data.latitude,
+                            //     lng: data[i].data.data.longitude
+                            // });
+                            loc.push({
+                                lat: data[i].data.data.latitude,
+                                lng: data[i].data.data.longitude
+                            });
+
+                            
+                               
+                            
+                            
+                        }
+                        else if(data[i].data.location == undefined){
+
+                            // insrt(loc, [
+                            //     data[i].date.split(' ')[2],
+                            //     data[i].date.split(' ')[1],
+                            //     data[i].date.split(' ')[0],
+                            //     data[i].time.split(':')[0],
+                            //     data[i].time.split(':')[1],
+                            //     data[i].time.split(':')[2]
+                            // ], {
+                            //     lat: data[i].data.data.latitude,
+                            //     lng: data[i].data.data.longitude
+                            // });
+                            loc.push({
+                                lat: data[i].data.data.latitude,
+                                lng: data[i].data.data.longitude
+                            });
+                        }
+
+                    
+                    }
+                    else{
+                        // console.log(i);
+                        break;
+                    }
+                    
+                    
+                }
+
+                const flightPath = new google.maps.Polyline({
+                    path: loc,
+                    geodesic: false,
+                    strokeColor: "#FF0000",
+                    strokeOpacity: 1.0,
+                    strokeWeight: 10,
+                });
+                
+                flightPath.setMap(map);
+                var latLnge = new google.maps.LatLng(loc[0].lat, loc[0].lng); //Makes a latlng
+                for(u in loc){
+                    if(u < loc.length){
+                        new google.maps.Marker({ position: { lat: loc[u].lat, lng: loc[u].lng }, map: map, animation: google.maps.Animation.DROP});
+                        
+                    }
+                    
+                }
+                map.setZoom(15);
+                map.panTo(latLnge);
+
                 client.service('dbapi').on('value', function(dat){
-                    dve = dat.devices[0]["Device data"];
+                    
                     clearTimeout(timer);
                     var dev = document.getElementById('pointer');
                     var stat = document.getElementById('status');
                     dev.style.background = "green";
-                    stat.innerText = "Online";
+                    if((dve.canbus.location.latitude !== dat.devices[0]["Device data"].canbus.location.latitude || dve.canbus.location.longitude !== dat.devices[0]["Device data"].canbus.location.longitude) == true || parseInt(dat.devices[0]["Device data"].canbus.running_speed) !== 0){
+                        stat.innerText = "Online and Moving";
+                    }
+                    else{
+                        stat.innerText = "Online and Not Moving";
+                    }
+                    
+                    
                     timer = setTimeout(function (){
                         dev.style.background = "grey";
                         stat.innerText = "Offline";
-                    }, 8000);
-                    data = dve.logs;
-                    var positio = [];
-                    var cnt = 0;
-                    loci = {};
-                    loc = [];
-                    console.log(dve);
-                    // for (i in data){
-                    //     cnt++;
-                    //     if(cnt < 40){
-                    //         if(data[i].data.action == 'ping'){
-                                
-                    //             insrt(loci, [
-                    //                 data[i].date.split(' ')[2],
-                    //                 data[i].date.split(' ')[1],
-                    //                 data[i].date.split(' ')[0],
-                    //                 data[i].time.split(':')[0],
-                    //                 data[i].time.split(':')[1],
-                    //                 data[i].time.split(':')[2]
-                    //             ], {
-                    //                 lat: data[i].data.data.latitude,
-                    //                 lng: data[i].data.data.longitude
-                    //             });
-                    //             loc.push({
-                    //                 lat: data[i].data.data.latitude,
-                    //                 lng: data[i].data.data.longitude
-                    //             });
-
-                                
-                                   
-                                
-                                
-                    //         }
-                    //         else if(data[i].data.location == undefined){
-
-                    //             insrt(loc, [
-                    //                 data[i].date.split(' ')[2],
-                    //                 data[i].date.split(' ')[1],
-                    //                 data[i].date.split(' ')[0],
-                    //                 data[i].time.split(':')[0],
-                    //                 data[i].time.split(':')[1],
-                    //                 data[i].time.split(':')[2]
-                    //             ], {
-                    //                 lat: data[i].data.data.latitude,
-                    //                 lng: data[i].data.data.longitude
-                    //             });
-                    //             loc.push({
-                    //                 lat: data[i].data.data.latitude,
-                    //                 lng: data[i].data.data.longitude
-                    //             });
-                    //         }
-
-                        
-                    //     }
-                    //     else{
-                    //         // console.log(i);
-                    //         break;
-                    //     }
-                        
-                        
-                    // }
+                    }, 10000);
                     
+                    
+                    dve = dat.devices[0]["Device data"];
         
                     
                     // map = new google.maps.Map(document.getElementById("map"), {
@@ -1881,15 +1931,28 @@ if(login()){
 
                 client.service('dbapi').on('value', function(dat){
                     var myData = dat[usr.user.email];
-                    snap = dat;
-                    cardetails.innerHTML = snap.devices[0].reg_id;
-                    var timer = setTimeout(function () {
-                        var deve = document.getElementById('pointer');
-                        var sta = document.getElementById('status');
-                        sta.innerText = "Initializing...";
-                        deve.style.background = "grey";
-                        }, 3000);
-                    dve = snap.devices[0]["Device data"];
+                    // snap = dat;
+                    cardetails.innerHTML = dat.devices[0].reg_id;
+                    clearTimeout(timer);
+                    var dev = document.getElementById('pointer');
+                    var stat = document.getElementById('status');
+                    dev.style.background = "green";
+                    console.log(dve);
+                    if((dve.location.latitude !== dat.devices[0]["Device data"].location.latitude || dve.location.longitude !== dat.devices[0]["Device data"].location.longitude) == true || parseInt(dat.devices[0]["Device data"].canbus.running_speed) !== 0){
+                        stat.innerText = "Online and Moving";
+                    }
+                    else{
+                        stat.innerText = "Online and Not Moving";
+                    }
+                    
+                    
+                    timer = setTimeout(function (){
+                        dev.style.background = "grey";
+                        stat.innerText = "Offline";
+                    }, 15000);
+                    
+                    
+                    dve = dat.devices[0]["Device data"];
                     
                     
                     for(card in canbus_cards){
@@ -1961,7 +2024,7 @@ if(login()){
                     namengrotationbar.innerText = "Normal";
                     namharshaccelbar.innerText = "Normal";
                     namharshbrakingbar.innerText = "Normal";
-                    
+                    console.log(gCharts);
                     switch(canbus_cat.value){
                         case 'fuel_con': {
                             var crds = document.getElementsByClassName(canbus_cat.value);
@@ -2069,8 +2132,10 @@ if(login()){
                                                         }
                                                     ]
                                                 };
+
                                                 timeTicket = setInterval(function () {
                                                     // option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+                                                    console.log(gCharts, chrt, gCharts[chrt]);
                                                     gCharts[chrt].setOption(option, true);
                                                 }, 2000)
                                                 // use configuration item and data specified to show chart
@@ -3067,4 +3132,44 @@ var set_canbus = function(element){
             break;
         }
     }
+}
+
+function addLatLng(event) {
+    const path = poly.getPath();
+  
+    // Because path is an MVCArray, we can simply append a new coordinate
+    // and it will automatically appear.
+    path.push(event.latLng);
+    // Add a new marker at the new plotted point on the polyline.
+    new google.maps.Marker({
+      position: event.latLng,
+      title: "#" + path.getLength(),
+      map: map,
+      animation: google.maps.Animation.BOUNCE
+    });
+}
+function geofenc(){
+    
+    var indc = document.getElementById('geofence');
+    console.log(indc.style['background-color']);
+    if(indc.style['background-color'] == 'grey'){
+        indc.style['background-color'] = 'limegreen';
+    }
+    else{
+        indc.style['background-color'] = 'grey';
+    }
+
+}
+
+function navig(){
+    
+    var indc = document.getElementById('navi');
+    console.log(indc.style['background-color']);
+    if(indc.style['background-color'] == 'grey'){
+        indc.style['background-color'] = 'limegreen';
+    }
+    else{
+        indc.style['background-color'] = 'grey';
+    }
+
 }
