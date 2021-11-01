@@ -1287,682 +1287,7 @@ if(login()){
                     
                 }
                 
-
-                //canbus
-                runningspeed.innerText = dve.canbus.running_speed;
-                coolanttemperature.innerText = dve.canbus.coolant_temp;
-                totalfuelconsumptionvol.innerText = dve.canbus.total_fuel_consumption_vol;
-                batteryvoltage.innerText = dve.canbus.battery_voltage;
-                throttleopeningwidth.innerText = dve.canbus.throttle_opening_width;
-                engineload.innerText = dve.canbus.engine_load;
-                instantenousfuelconsumption.innerText = dve.canbus.instantenous_fuel_consumption;
-                averagefuelconsumption.innerText = dve.canbus.average_fuel_consumption;
-                drivingrange.innerText = dve.canbus.driving_range;
-                totalmileage.innerText = dve.canbus.total_mileage;
-                singlefuelconsumptionvol.innerText = dve.canbus.single_fuel_consumption_vol;
-                currenterrorcodenos.innerText = dve.canbus.current_error_code_nos;
-                harshaccelerationno.innerText = dve.canbus.harsh_acceleration_no;
-                harshbrakeno.innerText = dve.canbus.harsh_brake_no;
-                enginespeed.innerText = dve.canbus.engine_speed;
-                //
-                batteryvoltagebar.innerHTML = `<div data-label="${getpcnt("batteryvoltage", dve.canbus.battery_voltage, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("batteryvoltagebar", dve.canbus.battery_voltage, "bar")}"></div>`;
-                coolanttemperaturebar.innerHTML = `<div data-label="${getpcnt("coolanttemperature", dve.canbus.coolant_temp, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("coolanttemperature", dve.canbus.coolant_temp, "bar")}"></div>`;
-                totalfuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("totalfuelconsumptionvol", dve.canbus.total_fuel_consumption_vol, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("totalfuelconsumptionvol", dve.canbus.total_fuel_consumption_vol, "bar")}"></div>`;
-                // enginespeedbar.innerHTML = `<div data-label="${getpcnt("enginespeed", dve.canbus.engine_speed, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("enginespeed", dve.canbus.engine_speed, "bar")}"></div>`;
-                throttleopeningwidthbar.innerHTML = `<div data-label="${getpcnt("throttleopeningwidth", dve.canbus.throttle_opening_width, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("throttleopeningwidth", dve.canbus.throttle_opening_width, "bar")}"></div>`;
-                engineloadbar.innerHTML = `<div data-label="${getpcnt("engineload", dve.canbus.engine_load, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("engineload", dve.canbus.engine_load, "bar")}"></div>`;
-                instantenousfuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("instantenousfuelconsumption", dve.canbus.instantenous_fuel_consumption, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("instantenousfuelconsumption", dve.canbus.instantenous_fuel_consumption, "bar")}"></div>`;
-                averagefuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("averagefuelconsumption", dve.canbus.average_fuel_consumption, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("averagefuelconsumption", dve.canbus.average_fuel_consumption, "bar")}"></div>`;
-                // drivingrangebar.innerHTML = `<div data-label="${getpcnt("drivingrange", dve.canbus.driving_range, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("drivingrange", dve.canbus.driving_range, "bar")}"></div>`;
-                // totalmileagebar.innerHTML = `<div data-label="${getpcnt("totalmileage", dve.canbus.total_mileage, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("totalmileage", dve.canbus.total_mileage, "bar")}"></div>`;
-                singlefuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("singlefuelconsumptionvol", dve.canbus.single_fuel_consumption_vol, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("singlefuelconsumptionvol", dve.canbus.single_fuel_consumption_vol, "bar")}"></div>`;
-                currenterrorcodenosbar.innerHTML = `<div data-label="${getpcnt("currenterrorcodenos", dve.canbus.current_error_code_nos, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("currenterrorcodenos", dve.canbus.current_error_code_nos, "bar")}"></div>`;
-                harshaccelerationnobar.innerHTML = `<div data-label="${getpcnt("harshaccelerationno", dve.canbus.harsh_acceleration_no, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("harshaccelerationno", dve.canbus.harsh_acceleration_no, "bar")}"></div>`;
-                harshbrakenobar.innerHTML = `<div data-label="${getpcnt("harshbrakeno", dve.canbus.harsh_brake_no, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("harshbrakeno", dve.canbus.harsh_brake_no, "bar")}"></div>`;
-
-                //Drvier behaviour
-                namign.innerText = dve["driver behavior"].total_ignition_no;
-                namdrivtim.innerText = dve["driver behavior"].total_driving_time;
-                namidltim.innerText = dve["driver behavior"].total_idling_time;
-                namhotstarts.innerText = dve["driver behavior"].average_hot_start_time;
-                namavgspeed.innerText = dve["driver behavior"].average_speed;
-                namhighestspeed.innerText = dve["driver behavior"].history_highest_speed;
-                namengrotation.innerText = dve["driver behavior"].history_highest_rotation;
-                namharshaccel.innerText = dve["driver behavior"].total_harsh_acceleration_no;
-                namharshbraking.innerText = dve["driver behavior"].total_harsh_brake_no;
-                console.log(parseFloat(dve.canbus.engine_load))
-                $("#namignbar").addClass("label-info");
-                $("#namdrivtimbar").addClass("label-info");
-                $("#namidltimbar").addClass("label-info");
-                $("#namhotstartsbar").addClass("label-info");
-                $("#namavgspeedbar").addClass("label-info");
-                $("#namhighestspeedbar").addClass("label-info");
-                $("#namengrotationbar").addClass("label-info");
-                $("#namharshaccelbar").addClass("label-info");
-                $("#namharshbrakingbar").addClass("label-info");
-                namignbar.innerText = "Normal";
-                namdrivtimbar.innerText = "Normal";
-                namidltimbar.innerText = "Normal";
-                namhotstartsbar.innerText = "Normal";
-                namavgspeedbar.innerText = "Normal";
-                namhighestspeedbar.innerText = "Normal";
-                namengrotationbar.innerText = "Normal";
-                namharshaccelbar.innerText = "Normal";
-                namharshbrakingbar.innerText = "Normal";
-                
-                
-                switch(canbus_cat.value){
-                    case 'fuel_con': {
-                        var crds = document.getElementsByClassName(canbus_cat.value);
-                        for(crd in crds){
-                            if(crd < crds.length){
-                                crds[crd].style.display = 'flex';
-                            }
-                            
-                        };
-                        break;
-                    }
-                    case 'temp_read': {
-                        var crds = document.getElementsByClassName(canbus_cat.value);
-                        for(crd in crds){
-                            if(crd < crds.length){
-                                crds[crd].style.display = 'flex';
-                            }
-                            
-                        };
-                        break;
-                    }
-                    case 'driv_spd': {
-                        var crds = document.getElementsByClassName(canbus_cat.value);
-                        for(crd in crds){
-                            if(crd < crds.length){
-                                crds[crd].style.display = 'flex';
-                            }
-                            
-                        };
-                        if(gCharts.length > 1){
-                            for(chrt in gCharts){
-                                if(chrt < gCharts.length){
-                                    switch(chrt.toString()){
-                                        case '0': {
-                                            option = {
-                                                tooltip: {
-                                                    formatter: "{a} <br/>{b} : {c}%"
-                                                }
-                                                , toolbox: {
-                                                    show: false
-                                                    , feature: {
-                                                        mark: {
-                                                            show: true
-                                                        }
-                                                        , restore: {
-                                                            show: true
-                                                        }
-                                                        , saveAsImage: {
-                                                            show: true
-                                                        }
-                                                    }
-                                                }
-                                                , series: [
-                                                    {
-                                                        name: '', 
-                                                        type: 'gauge',
-                                                        splitNumber: 0, // 分割段数，默认为5
-                                                        axisLine: { // 坐标轴线
-                                                            lineStyle: { // 属性lineStyle控制线条样式
-                                                                color: [[0.2, '#785ff3'], [0.8, '#8c76f9'], [1, '#9e8bfe']], 
-                                                                width: 20
-                                                            }
-                                                        }
-                                                        , axisTick: { // 坐标轴小标记
-                                                            splitNumber: 0, // 每份split细分多少段
-                                                            length: 12, // 属性length控制线长
-                                                            lineStyle: { // 属性lineStyle控制线条样式
-                                                                color: 'auto'
-                                                            }
-                                                        }
-                                                        , axisLabel: { // 坐标轴文本标签，详见axis.axisLabel
-                                                            textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                                                color: 'auto'
-                                                            }
-                                                        }
-                                                        , splitLine: { // 分隔线
-                                                            show: false, // 默认显示，属性show控制显示与否
-                                                            length: 50, // 属性length控制线长
-                                                            lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
-                                                                color: 'auto'
-                                                            }
-                                                        }
-                                                        , pointer: {
-                                                            width: 5
-                                                            , color: '#54667a'
-                                                        }
-                                                        , title: {
-                                                            show: false
-                                                            , offsetCenter: [0, '-40%'], // x, y，单位px
-                                                            textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                                                fontWeight: 'bolder'
-                                                            }
-                                                        }
-                                                        , detail: {
-                                                            textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                                                color: 'auto'
-                                                                , fontSize: '14'
-                                                                , fontWeight: 'bolder'
-                                                            }
-                                                        }
-                                                        , data: [{
-                                                            value: parseInt(dve.canbus.running_speed), 
-                                                            name: 'Speed'
-                                                        }]
-                                                    }
-                                                ]
-                                            };
-                                            timeTicket = setInterval(function () {
-                                                // option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
-                                                gCharts[chrt].setOption(option, true);
-                                            }, 2000)
-                                            // use configuration item and data specified to show chart
-                                            gCharts[chrt].setOption(option, true), $(function () {
-                                                function resize() {
-                                                    setTimeout(function () {
-                                                        gCharts[chrt].resize()
-                                                    }, 100)
-                                                }
-                                                $(window).on("resize", resize), $(".sidebartoggler").on("click", resize)
-                                            });
-            
-                                            break;
-                                        }
-                                        case '1': {
-                                            option = {
-                                                tooltip: {
-                                                    formatter: "{a} <br/>{b} : {c}%"
-                                                }
-                                                , toolbox: {
-                                                    show: false
-                                                    , feature: {
-                                                        mark: {
-                                                            show: true
-                                                        }
-                                                        , restore: {
-                                                            show: true
-                                                        }
-                                                        , saveAsImage: {
-                                                            show: true
-                                                        }
-                                                    }
-                                                }
-                                                , series: [
-                                                    {
-                                                        name: '', 
-                                                        type: 'gauge',
-                                                        splitNumber: 0, // 分割段数，默认为5
-                                                        axisLine: { // 坐标轴线
-                                                            lineStyle: { // 属性lineStyle控制线条样式
-                                                                color: [[0.2, '#785ff3'], [0.8, '#8c76f9'], [1, '#9e8bfe']], 
-                                                                width: 20
-                                                            }
-                                                        }
-                                                        , axisTick: { // 坐标轴小标记
-                                                            splitNumber: 0, // 每份split细分多少段
-                                                            length: 12, // 属性length控制线长
-                                                            lineStyle: { // 属性lineStyle控制线条样式
-                                                                color: 'auto'
-                                                            }
-                                                        }
-                                                        , axisLabel: { // 坐标轴文本标签，详见axis.axisLabel
-                                                            textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                                                color: 'auto'
-                                                            }
-                                                        }
-                                                        , splitLine: { // 分隔线
-                                                            show: false, // 默认显示，属性show控制显示与否
-                                                            length: 50, // 属性length控制线长
-                                                            lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
-                                                                color: 'auto'
-                                                            }
-                                                        }
-                                                        , pointer: {
-                                                            width: 5
-                                                            , color: '#54667a'
-                                                        }
-                                                        , title: {
-                                                            show: false
-                                                            , offsetCenter: [0, '-40%'], // x, y，单位px
-                                                            textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                                                fontWeight: 'bolder'
-                                                            }
-                                                        }
-                                                        , detail: {
-                                                            textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                                                color: 'auto'
-                                                                , fontSize: '14'
-                                                                , fontWeight: 'bolder'
-                                                            }
-                                                        }
-                                                        , data: [{
-                                                            value: parseInt(dve.canbus.driving_range), 
-                                                            name: 'Range'
-                                                        }]
-                                                    }
-                                                ]
-                                            };
-                                            timeTicket = setInterval(function () {
-                                                // option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
-                                                gCharts[chrt].setOption(option, true);
-                                            }, 2000)
-                                            // use configuration item and data specified to show chart
-                                            gCharts[chrt].setOption(option, true), $(function () {
-                                                function resize() {
-                                                    setTimeout(function () {
-                                                        gCharts[chrt].resize()
-                                                    }, 100)
-                                                }
-                                                $(window).on("resize", resize), $(".sidebartoggler").on("click", resize)
-                                            });
-            
-                                            break;
-                                        }
-                                        case '2': {
-                                            option = {
-                                                tooltip: {
-                                                    formatter: "{a} <br/>{b} : {c}%"
-                                                }
-                                                , toolbox: {
-                                                    show: false
-                                                    , feature: {
-                                                        mark: {
-                                                            show: true
-                                                        }
-                                                        , restore: {
-                                                            show: true
-                                                        }
-                                                        , saveAsImage: {
-                                                            show: true
-                                                        }
-                                                    }
-                                                }
-                                                , series: [
-                                                    {
-                                                        name: '', 
-                                                        type: 'gauge',
-                                                        splitNumber: 0, // 分割段数，默认为5
-                                                        axisLine: { // 坐标轴线
-                                                            lineStyle: { // 属性lineStyle控制线条样式
-                                                                color: [[0.2, '#785ff3'], [0.8, '#8c76f9'], [1, '#9e8bfe']], 
-                                                                width: 20
-                                                            }
-                                                        }
-                                                        , axisTick: { // 坐标轴小标记
-                                                            splitNumber: 0, // 每份split细分多少段
-                                                            length: 12, // 属性length控制线长
-                                                            lineStyle: { // 属性lineStyle控制线条样式
-                                                                color: 'auto'
-                                                            }
-                                                        }
-                                                        , axisLabel: { // 坐标轴文本标签，详见axis.axisLabel
-                                                            textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                                                color: 'auto'
-                                                            }
-                                                        }
-                                                        , splitLine: { // 分隔线
-                                                            show: false, // 默认显示，属性show控制显示与否
-                                                            length: 50, // 属性length控制线长
-                                                            lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
-                                                                color: 'auto'
-                                                            }
-                                                        }
-                                                        , pointer: {
-                                                            width: 5
-                                                            , color: '#54667a'
-                                                        }
-                                                        , title: {
-                                                            show: false
-                                                            , offsetCenter: [0, '-40%'], // x, y，单位px
-                                                            textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                                                fontWeight: 'bolder'
-                                                            }
-                                                        }
-                                                        , detail: {
-                                                            textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                                                color: 'auto'
-                                                                , fontSize: '14'
-                                                                , fontWeight: 'bolder'
-                                                            }
-                                                        }
-                                                        , data: [{
-                                                            value: parseInt(dve.canbus.total_mileage), 
-                                                            name: 'Mileage'
-                                                        }]
-                                                    }
-                                                ]
-                                            };
-                                            timeTicket = setInterval(function () {
-                                                // option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
-                                                gCharts[chrt].setOption(option, true);
-                                            }, 2000)
-                                            // use configuration item and data specified to show chart
-                                            gCharts[chrt].setOption(option, true), $(function () {
-                                                function resize() {
-                                                    setTimeout(function () {
-                                                        gCharts[chrt].resize()
-                                                    }, 100)
-                                                }
-                                                $(window).on("resize", resize), $(".sidebartoggler").on("click", resize)
-                                            });
-            
-                                            break;
-                                        }
-                                        case '3' : {
-                                            option = {
-                                                tooltip: {
-                                                    formatter: "{a} <br/>{b} : {c}%"
-                                                }
-                                                , toolbox: {
-                                                    show: false
-                                                    , feature: {
-                                                        mark: {
-                                                            show: true
-                                                        }
-                                                        , restore: {
-                                                            show: true
-                                                        }
-                                                        , saveAsImage: {
-                                                            show: true
-                                                        }
-                                                    }
-                                                }
-                                                , series: [
-                                                    {
-                                                        name: '', 
-                                                        type: 'gauge',
-                                                        splitNumber: 0, // 分割段数，默认为5
-                                                        axisLine: { // 坐标轴线
-                                                            lineStyle: { // 属性lineStyle控制线条样式
-                                                                color: [[0.2, '#785ff3'], [0.8, '#8c76f9'], [1, '#9e8bfe']], 
-                                                                width: 20
-                                                            }
-                                                        }
-                                                        , axisTick: { // 坐标轴小标记
-                                                            splitNumber: 0, // 每份split细分多少段
-                                                            length: 12, // 属性length控制线长
-                                                            lineStyle: { // 属性lineStyle控制线条样式
-                                                                color: 'auto'
-                                                            }
-                                                        }
-                                                        , axisLabel: { // 坐标轴文本标签，详见axis.axisLabel
-                                                            textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                                                color: 'auto'
-                                                            }
-                                                        }
-                                                        , splitLine: { // 分隔线
-                                                            show: false, // 默认显示，属性show控制显示与否
-                                                            length: 50, // 属性length控制线长
-                                                            lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
-                                                                color: 'auto'
-                                                            }
-                                                        }
-                                                        , pointer: {
-                                                            width: 5
-                                                            , color: '#54667a'
-                                                        }
-                                                        , title: {
-                                                            show: false
-                                                            , offsetCenter: [0, '-40%'], // x, y，单位px
-                                                            textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                                                fontWeight: 'bolder'
-                                                            }
-                                                        }
-                                                        , detail: {
-                                                            textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                                                color: 'auto'
-                                                                , fontSize: '14'
-                                                                , fontWeight: 'bolder'
-                                                            }
-                                                        }
-                                                        , data: [{
-                                                            value: parseInt(dve.canbus.engine_speed), 
-                                                            name: 'Eng Speed'
-                                                        }]
-                                                    }
-                                                ]
-                                            };
-                                            timeTicket = setInterval(function () {
-                                                // option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
-                                                gCharts[chrt].setOption(option, true);
-                                            }, 2000)
-                                            // use configuration item and data specified to show chart
-                                            gCharts[chrt].setOption(option, true), $(function () {
-                                                function resize() {
-                                                    setTimeout(function () {
-                                                        gCharts[chrt].resize()
-                                                    }, 100)
-                                                }
-                                                $(window).on("resize", resize), $(".sidebartoggler").on("click", resize)
-                                            });
-            
-                                            break;
-                                        }
-                                        default:{
-                                            break;
-                                        }
-                                    }
-                                }
-                                
-                            }
-                        }
-                        
-            
-                        
-                        
-            
-                        break;
-                    }
-                    case 'power_others': {
-                        var crds = document.getElementsByClassName(canbus_cat.value);
-                        for(crd in crds){
-                            if(crd < crds.length){
-                                crds[crd].style.display = 'flex';
-                            }
-                            
-                        };
-                        break;
-                    }
-                    default: {
-                        var crds = document.getElementsByClassName('canbus');
-                        for(crd in crds){
-                            if(crd < crds.length){
-                                crds[crd].style.display = 'flex';
-                            }
-                            
-                        };
-                        break;
-                    }
-                }
-                var healthStatus = 100;
-                if(dve.carmd.decode !== undefined){
-                    carmd_make.innerText = dve.carmd.decode.make;
-                    carmd_model.innerText = dve.carmd.decode.model;
-                    carmd_year.innerText = dve.carmd.decode.year;
-                    carmd_trans.innerText = dve.carmd.decode.transmission;
-                    carmd_manu.innerText = dve.carmd.decode.manufacturer;
-                    carmd_engine.innerText = dve.carmd.decode.engine;
-                    carmd_mkmod.innerText = dve.carmd.decode.make + " " + dve.carmd.decode.model;
-                    carmd_yr.innerText = dve.carmd.decode.year;
-                    carmd_mk.innerText = dve.carmd.decode.make;
-                }
-                else{
-                    carmd_make.innerText = 'Not Set';
-                    carmd_model.innerText = 'Not Set';
-                    carmd_year.innerText = 'Not Set';
-                    carmd_trans.innerText = 'Not Set';
-                    carmd_manu.innerText = 'Not Set';
-                    carmd_engine.innerText = 'Not Set';
-                    carmd_mkmod.innerText = 'Not Set';
-                    carmd_yr.innerText = 'Not Set';
-                    carmd_mk.innerText = 'Not Set';
-                }
-                if(dve.carmd.repair !== undefined){
-                    healthStatus -= 15;
-                    recvderr.innerText = dve.carmd.repair.desc;
-                    recvderrcond.innerText = "Urgency: " + dve.carmd.repair.urgency;
-                    recvdsum.innerText = dve.carmd.repair.urgency_desc;
-                    difficulty.innerText = "Difficulty: " + dve.carmd.repair.difficulty;
-                    hours.innerText = "Hours: " + dve.carmd.repair.hours;
-                    labour_cst.innerText = "Est. Labour Cost: " + dve.carmd.repair.labor_cost;
-                    part_cst.innerText = "Est. Part Cost: " + dve.carmd.repair.part_cost;
-                    total_cst.innerText = "Est. Total Cost: " + dve.carmd.repair.total_cost;
-                    partnos.innerText = dve.carmd.repair.parts.length;
-                    var html_parts = '';
-                    for(var i = 0; i < dve.carmd.repair.parts.length; i++){
-                        
-                        html_parts += `<div class="col-lg-4"><div class="card card-body"><div class="d-flex flex-row"><div class="round round-lg align-self-center round-danger"><i class="mdi mdi-car-settings"></i></div><div class="m-l-10 align-self-center"><h3 class="m-b-0 font-light">`;
-                        html_parts += dve.carmd.repair.parts[i].desc;
-                        html_parts += `</h3><h5 class="text-muted m-b-0">`;
-                        html_parts +=  "$" + dve.carmd.repair.parts[i].price;
-                        html_parts += `</h5></div></div></div></div>`;
-                    }
-                    partsno.innerHTML = html_parts;
-
-                }
-                if(parseInt(dve.canbus.coolant_temp) > 100){
-                    cooling_sys.innerText = 'Needs Checking';
-                    healthStatus -= 15;
-                }
-                else{
-                    cooling_sys.innerText = 'Working Fine';
-                }
-                
-                
-          
-                
-
-                if(parseInt(dve.canbus.current_error_code_nos) >= 1){
-                    healthStatus -= 10;
-                    errcodno.innerHTML = dve.canbus.current_error_code_nos;
-                    var flty = document.getElementsByClassName('faulty');
-                    for(var i = 0; i < flty.length; i++){
-                        flty[i].style.display = 'block !important';
-                    }
-                    if(dve.error_code !== undefined){
-                        er.innerHTML = dve.error_code.split(',')[0];
-                        var elem_opti = document.createElement('option');
-                        elem_opti.value = dve.error_code.split(',')[0];
-                        elem_opti.innerHTML = dve.error_code.split(',')[0];
-                        error_cdes.innerHTML = elem_opti.selected;
-
-                        for(var i = 1; i < dve.error_code.split(',').length; i++){
-                            var elem_opt = document.createElement('option');
-                            elem_opt.value = dve.error_code.split(',')[i];
-                            elem_opt.innerHTML = dve.error_code.split(',')[i];
-                            error_cdes.innerHTML += elem_opt;
-                        }
-                        errecv.innerHTML = dve.canbus.date;
-                        engine_health.innerText = 'Not So Great';
-                        maint.innerText = 'Needed Urgently';
-                    }
-                    
-
-                    
-                    
-
-                }
-                else{
-                    engine_health.innerText = 'Okay'
-                    maint.innerText = ' This can wait';
-                    var flty = document.getElementsByClassName('faulty');
-                    for(var i = 0; i < flty.length; i++){
-                        flty[i].style.display = 'none' ;
-                    }
-                    recvderr.innerText = 'No Errors';
-                    recvderrcond.innerText = 0;
-                    recvdsum.innerText = 'Your Vehicle Seems Ok';
-                }
-
-                if(parseInt(dve.canbus.battery_voltage) < 10){
-                    healthStatus -= 5;
-                    power.innerText = 'Needs Checking';
-                }
-                else{
-                    power.innerText = 'All Good Here';
-                }
-
-                if(healthStatus > 70 && healthStatus <= 100){
-                    healthStats.innerText = 'Healthy ' + healthStatus + '%';
-                }
-                else if(healthStatus > 50 && healthStatus <= 70){
-                    healthStats.innerText = 'Not So Good ' + healthStatus + '%';
-                }
-                else if(healthStatus > 30 && healthStatus <= 50){
-                    healthStats.innerText = 'Bad ' + healthStatus + '%';
-                }
-                else{
-                    healthStats.innerText = 'Terrible ' + healthStatus + '%';
-                }
-                
-                
-                console.log(healthStatus);
-                new Chartist.Pie('.ct-chart', {
-                    series: [healthStatus, 100-healthStatus]
-                }, {
-                    donut: true
-                    , donutWidth: 20
-                    , startAngle: 0
-                    , showLabel: false
-                });
-                
-
-
-                
-                
-                
-                
-                
-
-                
-
-            
-              
-              
-              
-
-              
-
-                client.service('dbapi').on('value', function(dat){
-                    var myData = dat[usr.user.email];
-                    // snap = dat;
-                    cardetails.innerHTML = dat.devices[0].reg_id;
-                    clearTimeout(timer);
-                    var dev = document.getElementById('pointer');
-                    var stat = document.getElementById('status');
-                    dev.style.background = "green";
-                    console.log(dve);
-                    if((dve.location.latitude !== dat.devices[0]["Device data"].location.latitude || dve.location.longitude !== dat.devices[0]["Device data"].location.longitude) == true || parseInt(dat.devices[0]["Device data"].canbus.running_speed) !== 0){
-                        stat.innerText = "Online and Moving";
-                    }
-                    else{
-                        stat.innerText = "Online and Not Moving";
-                    }
-                    
-                    
-                    timer = setTimeout(function (){
-                        dev.style.background = "grey";
-                        stat.innerText = "Offline";
-                    }, 15000);
-                    
-                    
-                    dve = dat.devices[0]["Device data"];
-                    
-                    
-                    for(card in canbus_cards){
-                        if(card < canbus_cards.length){
-                            canbus_cards[card].style.display = 'none';
-                        }
-                        
-                    }
-                    
-    
+                if(dve.canbus !== 'Unavailable'){
                     //canbus
                     runningspeed.innerText = dve.canbus.running_speed;
                     coolanttemperature.innerText = dve.canbus.coolant_temp;
@@ -1979,7 +1304,7 @@ if(login()){
                     harshaccelerationno.innerText = dve.canbus.harsh_acceleration_no;
                     harshbrakeno.innerText = dve.canbus.harsh_brake_no;
                     enginespeed.innerText = dve.canbus.engine_speed;
-                    //
+
                     batteryvoltagebar.innerHTML = `<div data-label="${getpcnt("batteryvoltage", dve.canbus.battery_voltage, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("batteryvoltagebar", dve.canbus.battery_voltage, "bar")}"></div>`;
                     coolanttemperaturebar.innerHTML = `<div data-label="${getpcnt("coolanttemperature", dve.canbus.coolant_temp, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("coolanttemperature", dve.canbus.coolant_temp, "bar")}"></div>`;
                     totalfuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("totalfuelconsumptionvol", dve.canbus.total_fuel_consumption_vol, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("totalfuelconsumptionvol", dve.canbus.total_fuel_consumption_vol, "bar")}"></div>`;
@@ -1994,37 +1319,7 @@ if(login()){
                     currenterrorcodenosbar.innerHTML = `<div data-label="${getpcnt("currenterrorcodenos", dve.canbus.current_error_code_nos, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("currenterrorcodenos", dve.canbus.current_error_code_nos, "bar")}"></div>`;
                     harshaccelerationnobar.innerHTML = `<div data-label="${getpcnt("harshaccelerationno", dve.canbus.harsh_acceleration_no, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("harshaccelerationno", dve.canbus.harsh_acceleration_no, "bar")}"></div>`;
                     harshbrakenobar.innerHTML = `<div data-label="${getpcnt("harshbrakeno", dve.canbus.harsh_brake_no, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("harshbrakeno", dve.canbus.harsh_brake_no, "bar")}"></div>`;
-    
-                    //Drvier behaviour
-                    namign.innerText = dve["driver behavior"].total_ignition_no;
-                    namdrivtim.innerText = dve["driver behavior"].total_driving_time;
-                    namidltim.innerText = dve["driver behavior"].total_idling_time;
-                    namhotstarts.innerText = dve["driver behavior"].average_hot_start_time;
-                    namavgspeed.innerText = dve["driver behavior"].average_speed;
-                    namhighestspeed.innerText = dve["driver behavior"].history_highest_speed;
-                    namengrotation.innerText = dve["driver behavior"].history_highest_rotation;
-                    namharshaccel.innerText = dve["driver behavior"].total_harsh_acceleration_no;
-                    namharshbraking.innerText = dve["driver behavior"].total_harsh_brake_no;
-                    console.log(parseFloat(dve.canbus.engine_load))
-                    $("#namignbar").addClass("label-info");
-                    $("#namdrivtimbar").addClass("label-info");
-                    $("#namidltimbar").addClass("label-info");
-                    $("#namhotstartsbar").addClass("label-info");
-                    $("#namavgspeedbar").addClass("label-info");
-                    $("#namhighestspeedbar").addClass("label-info");
-                    $("#namengrotationbar").addClass("label-info");
-                    $("#namharshaccelbar").addClass("label-info");
-                    $("#namharshbrakingbar").addClass("label-info");
-                    namignbar.innerText = "Normal";
-                    namdrivtimbar.innerText = "Normal";
-                    namidltimbar.innerText = "Normal";
-                    namhotstartsbar.innerText = "Normal";
-                    namavgspeedbar.innerText = "Normal";
-                    namhighestspeedbar.innerText = "Normal";
-                    namengrotationbar.innerText = "Normal";
-                    namharshaccelbar.innerText = "Normal";
-                    namharshbrakingbar.innerText = "Normal";
-                    console.log(gCharts);
+
                     switch(canbus_cat.value){
                         case 'fuel_con': {
                             var crds = document.getElementsByClassName(canbus_cat.value);
@@ -2132,10 +1427,8 @@ if(login()){
                                                         }
                                                     ]
                                                 };
-
                                                 timeTicket = setInterval(function () {
                                                     // option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
-                                                    console.log(gCharts, chrt, gCharts[chrt]);
                                                     gCharts[chrt].setOption(option, true);
                                                 }, 2000)
                                                 // use configuration item and data specified to show chart
@@ -2503,6 +1796,8 @@ if(login()){
                         partsno.innerHTML = html_parts;
     
                     }
+
+
                     if(parseInt(dve.canbus.coolant_temp) > 100){
                         cooling_sys.innerText = 'Needs Checking';
                         healthStatus -= 15;
@@ -2510,11 +1805,7 @@ if(login()){
                     else{
                         cooling_sys.innerText = 'Working Fine';
                     }
-                    
-                    
-              
-                    
-    
+
                     if(parseInt(dve.canbus.current_error_code_nos) >= 1){
                         healthStatus -= 10;
                         errcodno.innerHTML = dve.canbus.current_error_code_nos;
@@ -2564,7 +1855,7 @@ if(login()){
                     else{
                         power.innerText = 'All Good Here';
                     }
-    
+
                     if(healthStatus > 70 && healthStatus <= 100){
                         healthStats.innerText = 'Healthy ' + healthStatus + '%';
                     }
@@ -2588,6 +1879,747 @@ if(login()){
                         , startAngle: 0
                         , showLabel: false
                     });
+
+
+                }
+                else{
+                    
+                }
+
+                if(dve["driver behavior"] !== 'Unavailable'){
+                    namign.innerText = dve["driver behavior"].total_ignition_no;
+                    namdrivtim.innerText = dve["driver behavior"].total_driving_time;
+                    namidltim.innerText = dve["driver behavior"].total_idling_time;
+                    namhotstarts.innerText = dve["driver behavior"].average_hot_start_time;
+                    namavgspeed.innerText = dve["driver behavior"].average_speed;
+                    namhighestspeed.innerText = dve["driver behavior"].history_highest_speed;
+                    namengrotation.innerText = dve["driver behavior"].history_highest_rotation;
+                    namharshaccel.innerText = dve["driver behavior"].total_harsh_acceleration_no;
+                    namharshbraking.innerText = dve["driver behavior"].total_harsh_brake_no;
+                    $("#namignbar").addClass("label-info");
+                    $("#namdrivtimbar").addClass("label-info");
+                    $("#namidltimbar").addClass("label-info");
+                    $("#namhotstartsbar").addClass("label-info");
+                    $("#namavgspeedbar").addClass("label-info");
+                    $("#namhighestspeedbar").addClass("label-info");
+                    $("#namengrotationbar").addClass("label-info");
+                    $("#namharshaccelbar").addClass("label-info");
+                    $("#namharshbrakingbar").addClass("label-info");
+                    namignbar.innerText = "Normal";
+                    namdrivtimbar.innerText = "Normal";
+                    namidltimbar.innerText = "Normal";
+                    namhotstartsbar.innerText = "Normal";
+                    namavgspeedbar.innerText = "Normal";
+                    namhighestspeedbar.innerText = "Normal";
+                    namengrotationbar.innerText = "Normal";
+                    namharshaccelbar.innerText = "Normal";
+                    namharshbrakingbar.innerText = "Normal";
+
+                }
+                else{
+                    
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+          
+                
+
+                
+
+                
+                
+
+
+                
+                
+                
+                
+                
+
+                
+
+            
+              
+              
+              
+
+              
+
+                client.service('dbapi').on('value', function(dat){
+                    var myData = dat[usr.user.email];
+                    // snap = dat;
+                    cardetails.innerHTML = dat.devices[0].reg_id;
+                    clearTimeout(timer);
+                    var dev = document.getElementById('pointer');
+                    var stat = document.getElementById('status');
+                    dev.style.background = "green";
+                    console.log(dve);
+                    if((dve.location.latitude !== dat.devices[0]["Device data"].location.latitude || dve.location.longitude !== dat.devices[0]["Device data"].location.longitude) == true || parseInt(dat.devices[0]["Device data"].canbus.running_speed) !== 0){
+                        stat.innerText = "Online and Moving";
+                    }
+                    else{
+                        stat.innerText = "Online and Not Moving";
+                    }
+                    
+                    
+                    timer = setTimeout(function (){
+                        dev.style.background = "grey";
+                        stat.innerText = "Offline";
+                    }, 15000);
+                    
+                    
+                    dve = dat.devices[0]["Device data"];
+                    
+                    
+                    for(card in canbus_cards){
+                        if(card < canbus_cards.length){
+                            canbus_cards[card].style.display = 'none';
+                        }
+                        
+                    }
+                    
+    
+                    if(dve.canbus !== 'Unavailable'){
+                        //canbus
+                        runningspeed.innerText = dve.canbus.running_speed;
+                        coolanttemperature.innerText = dve.canbus.coolant_temp;
+                        totalfuelconsumptionvol.innerText = dve.canbus.total_fuel_consumption_vol;
+                        batteryvoltage.innerText = dve.canbus.battery_voltage;
+                        throttleopeningwidth.innerText = dve.canbus.throttle_opening_width;
+                        engineload.innerText = dve.canbus.engine_load;
+                        instantenousfuelconsumption.innerText = dve.canbus.instantenous_fuel_consumption;
+                        averagefuelconsumption.innerText = dve.canbus.average_fuel_consumption;
+                        drivingrange.innerText = dve.canbus.driving_range;
+                        totalmileage.innerText = dve.canbus.total_mileage;
+                        singlefuelconsumptionvol.innerText = dve.canbus.single_fuel_consumption_vol;
+                        currenterrorcodenos.innerText = dve.canbus.current_error_code_nos;
+                        harshaccelerationno.innerText = dve.canbus.harsh_acceleration_no;
+                        harshbrakeno.innerText = dve.canbus.harsh_brake_no;
+                        enginespeed.innerText = dve.canbus.engine_speed;
+    
+                        batteryvoltagebar.innerHTML = `<div data-label="${getpcnt("batteryvoltage", dve.canbus.battery_voltage, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("batteryvoltagebar", dve.canbus.battery_voltage, "bar")}"></div>`;
+                        coolanttemperaturebar.innerHTML = `<div data-label="${getpcnt("coolanttemperature", dve.canbus.coolant_temp, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("coolanttemperature", dve.canbus.coolant_temp, "bar")}"></div>`;
+                        totalfuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("totalfuelconsumptionvol", dve.canbus.total_fuel_consumption_vol, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("totalfuelconsumptionvol", dve.canbus.total_fuel_consumption_vol, "bar")}"></div>`;
+                        // enginespeedbar.innerHTML = `<div data-label="${getpcnt("enginespeed", dve.canbus.engine_speed, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("enginespeed", dve.canbus.engine_speed, "bar")}"></div>`;
+                        throttleopeningwidthbar.innerHTML = `<div data-label="${getpcnt("throttleopeningwidth", dve.canbus.throttle_opening_width, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("throttleopeningwidth", dve.canbus.throttle_opening_width, "bar")}"></div>`;
+                        engineloadbar.innerHTML = `<div data-label="${getpcnt("engineload", dve.canbus.engine_load, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("engineload", dve.canbus.engine_load, "bar")}"></div>`;
+                        instantenousfuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("instantenousfuelconsumption", dve.canbus.instantenous_fuel_consumption, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("instantenousfuelconsumption", dve.canbus.instantenous_fuel_consumption, "bar")}"></div>`;
+                        averagefuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("averagefuelconsumption", dve.canbus.average_fuel_consumption, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("averagefuelconsumption", dve.canbus.average_fuel_consumption, "bar")}"></div>`;
+                        // drivingrangebar.innerHTML = `<div data-label="${getpcnt("drivingrange", dve.canbus.driving_range, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("drivingrange", dve.canbus.driving_range, "bar")}"></div>`;
+                        // totalmileagebar.innerHTML = `<div data-label="${getpcnt("totalmileage", dve.canbus.total_mileage, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("totalmileage", dve.canbus.total_mileage, "bar")}"></div>`;
+                        singlefuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("singlefuelconsumptionvol", dve.canbus.single_fuel_consumption_vol, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("singlefuelconsumptionvol", dve.canbus.single_fuel_consumption_vol, "bar")}"></div>`;
+                        currenterrorcodenosbar.innerHTML = `<div data-label="${getpcnt("currenterrorcodenos", dve.canbus.current_error_code_nos, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("currenterrorcodenos", dve.canbus.current_error_code_nos, "bar")}"></div>`;
+                        harshaccelerationnobar.innerHTML = `<div data-label="${getpcnt("harshaccelerationno", dve.canbus.harsh_acceleration_no, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("harshaccelerationno", dve.canbus.harsh_acceleration_no, "bar")}"></div>`;
+                        harshbrakenobar.innerHTML = `<div data-label="${getpcnt("harshbrakeno", dve.canbus.harsh_brake_no, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("harshbrakeno", dve.canbus.harsh_brake_no, "bar")}"></div>`;
+    
+                        switch(canbus_cat.value){
+                            case 'fuel_con': {
+                                var crds = document.getElementsByClassName(canbus_cat.value);
+                                for(crd in crds){
+                                    if(crd < crds.length){
+                                        crds[crd].style.display = 'flex';
+                                    }
+                                    
+                                };
+                                break;
+                            }
+                            case 'temp_read': {
+                                var crds = document.getElementsByClassName(canbus_cat.value);
+                                for(crd in crds){
+                                    if(crd < crds.length){
+                                        crds[crd].style.display = 'flex';
+                                    }
+                                    
+                                };
+                                break;
+                            }
+                            case 'driv_spd': {
+                                var crds = document.getElementsByClassName(canbus_cat.value);
+                                for(crd in crds){
+                                    if(crd < crds.length){
+                                        crds[crd].style.display = 'flex';
+                                    }
+                                    
+                                };
+                                if(gCharts.length > 1){
+                                    for(chrt in gCharts){
+                                        if(chrt < gCharts.length){
+                                            switch(chrt.toString()){
+                                                case '0': {
+                                                    option = {
+                                                        tooltip: {
+                                                            formatter: "{a} <br/>{b} : {c}%"
+                                                        }
+                                                        , toolbox: {
+                                                            show: false
+                                                            , feature: {
+                                                                mark: {
+                                                                    show: true
+                                                                }
+                                                                , restore: {
+                                                                    show: true
+                                                                }
+                                                                , saveAsImage: {
+                                                                    show: true
+                                                                }
+                                                            }
+                                                        }
+                                                        , series: [
+                                                            {
+                                                                name: '', 
+                                                                type: 'gauge',
+                                                                splitNumber: 0, // 分割段数，默认为5
+                                                                axisLine: { // 坐标轴线
+                                                                    lineStyle: { // 属性lineStyle控制线条样式
+                                                                        color: [[0.2, '#785ff3'], [0.8, '#8c76f9'], [1, '#9e8bfe']], 
+                                                                        width: 20
+                                                                    }
+                                                                }
+                                                                , axisTick: { // 坐标轴小标记
+                                                                    splitNumber: 0, // 每份split细分多少段
+                                                                    length: 12, // 属性length控制线长
+                                                                    lineStyle: { // 属性lineStyle控制线条样式
+                                                                        color: 'auto'
+                                                                    }
+                                                                }
+                                                                , axisLabel: { // 坐标轴文本标签，详见axis.axisLabel
+                                                                    textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                                                        color: 'auto'
+                                                                    }
+                                                                }
+                                                                , splitLine: { // 分隔线
+                                                                    show: false, // 默认显示，属性show控制显示与否
+                                                                    length: 50, // 属性length控制线长
+                                                                    lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+                                                                        color: 'auto'
+                                                                    }
+                                                                }
+                                                                , pointer: {
+                                                                    width: 5
+                                                                    , color: '#54667a'
+                                                                }
+                                                                , title: {
+                                                                    show: false
+                                                                    , offsetCenter: [0, '-40%'], // x, y，单位px
+                                                                    textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                                                        fontWeight: 'bolder'
+                                                                    }
+                                                                }
+                                                                , detail: {
+                                                                    textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                                                        color: 'auto'
+                                                                        , fontSize: '14'
+                                                                        , fontWeight: 'bolder'
+                                                                    }
+                                                                }
+                                                                , data: [{
+                                                                    value: parseInt(dve.canbus.running_speed), 
+                                                                    name: 'Speed'
+                                                                }]
+                                                            }
+                                                        ]
+                                                    };
+                                                    timeTicket = setInterval(function () {
+                                                        // option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+                                                        gCharts[chrt].setOption(option, true);
+                                                    }, 2000)
+                                                    // use configuration item and data specified to show chart
+                                                    gCharts[chrt].setOption(option, true), $(function () {
+                                                        function resize() {
+                                                            setTimeout(function () {
+                                                                gCharts[chrt].resize()
+                                                            }, 100)
+                                                        }
+                                                        $(window).on("resize", resize), $(".sidebartoggler").on("click", resize)
+                                                    });
+                    
+                                                    break;
+                                                }
+                                                case '1': {
+                                                    option = {
+                                                        tooltip: {
+                                                            formatter: "{a} <br/>{b} : {c}%"
+                                                        }
+                                                        , toolbox: {
+                                                            show: false
+                                                            , feature: {
+                                                                mark: {
+                                                                    show: true
+                                                                }
+                                                                , restore: {
+                                                                    show: true
+                                                                }
+                                                                , saveAsImage: {
+                                                                    show: true
+                                                                }
+                                                            }
+                                                        }
+                                                        , series: [
+                                                            {
+                                                                name: '', 
+                                                                type: 'gauge',
+                                                                splitNumber: 0, // 分割段数，默认为5
+                                                                axisLine: { // 坐标轴线
+                                                                    lineStyle: { // 属性lineStyle控制线条样式
+                                                                        color: [[0.2, '#785ff3'], [0.8, '#8c76f9'], [1, '#9e8bfe']], 
+                                                                        width: 20
+                                                                    }
+                                                                }
+                                                                , axisTick: { // 坐标轴小标记
+                                                                    splitNumber: 0, // 每份split细分多少段
+                                                                    length: 12, // 属性length控制线长
+                                                                    lineStyle: { // 属性lineStyle控制线条样式
+                                                                        color: 'auto'
+                                                                    }
+                                                                }
+                                                                , axisLabel: { // 坐标轴文本标签，详见axis.axisLabel
+                                                                    textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                                                        color: 'auto'
+                                                                    }
+                                                                }
+                                                                , splitLine: { // 分隔线
+                                                                    show: false, // 默认显示，属性show控制显示与否
+                                                                    length: 50, // 属性length控制线长
+                                                                    lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+                                                                        color: 'auto'
+                                                                    }
+                                                                }
+                                                                , pointer: {
+                                                                    width: 5
+                                                                    , color: '#54667a'
+                                                                }
+                                                                , title: {
+                                                                    show: false
+                                                                    , offsetCenter: [0, '-40%'], // x, y，单位px
+                                                                    textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                                                        fontWeight: 'bolder'
+                                                                    }
+                                                                }
+                                                                , detail: {
+                                                                    textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                                                        color: 'auto'
+                                                                        , fontSize: '14'
+                                                                        , fontWeight: 'bolder'
+                                                                    }
+                                                                }
+                                                                , data: [{
+                                                                    value: parseInt(dve.canbus.driving_range), 
+                                                                    name: 'Range'
+                                                                }]
+                                                            }
+                                                        ]
+                                                    };
+                                                    timeTicket = setInterval(function () {
+                                                        // option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+                                                        gCharts[chrt].setOption(option, true);
+                                                    }, 2000)
+                                                    // use configuration item and data specified to show chart
+                                                    gCharts[chrt].setOption(option, true), $(function () {
+                                                        function resize() {
+                                                            setTimeout(function () {
+                                                                gCharts[chrt].resize()
+                                                            }, 100)
+                                                        }
+                                                        $(window).on("resize", resize), $(".sidebartoggler").on("click", resize)
+                                                    });
+                    
+                                                    break;
+                                                }
+                                                case '2': {
+                                                    option = {
+                                                        tooltip: {
+                                                            formatter: "{a} <br/>{b} : {c}%"
+                                                        }
+                                                        , toolbox: {
+                                                            show: false
+                                                            , feature: {
+                                                                mark: {
+                                                                    show: true
+                                                                }
+                                                                , restore: {
+                                                                    show: true
+                                                                }
+                                                                , saveAsImage: {
+                                                                    show: true
+                                                                }
+                                                            }
+                                                        }
+                                                        , series: [
+                                                            {
+                                                                name: '', 
+                                                                type: 'gauge',
+                                                                splitNumber: 0, // 分割段数，默认为5
+                                                                axisLine: { // 坐标轴线
+                                                                    lineStyle: { // 属性lineStyle控制线条样式
+                                                                        color: [[0.2, '#785ff3'], [0.8, '#8c76f9'], [1, '#9e8bfe']], 
+                                                                        width: 20
+                                                                    }
+                                                                }
+                                                                , axisTick: { // 坐标轴小标记
+                                                                    splitNumber: 0, // 每份split细分多少段
+                                                                    length: 12, // 属性length控制线长
+                                                                    lineStyle: { // 属性lineStyle控制线条样式
+                                                                        color: 'auto'
+                                                                    }
+                                                                }
+                                                                , axisLabel: { // 坐标轴文本标签，详见axis.axisLabel
+                                                                    textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                                                        color: 'auto'
+                                                                    }
+                                                                }
+                                                                , splitLine: { // 分隔线
+                                                                    show: false, // 默认显示，属性show控制显示与否
+                                                                    length: 50, // 属性length控制线长
+                                                                    lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+                                                                        color: 'auto'
+                                                                    }
+                                                                }
+                                                                , pointer: {
+                                                                    width: 5
+                                                                    , color: '#54667a'
+                                                                }
+                                                                , title: {
+                                                                    show: false
+                                                                    , offsetCenter: [0, '-40%'], // x, y，单位px
+                                                                    textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                                                        fontWeight: 'bolder'
+                                                                    }
+                                                                }
+                                                                , detail: {
+                                                                    textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                                                        color: 'auto'
+                                                                        , fontSize: '14'
+                                                                        , fontWeight: 'bolder'
+                                                                    }
+                                                                }
+                                                                , data: [{
+                                                                    value: parseInt(dve.canbus.total_mileage), 
+                                                                    name: 'Mileage'
+                                                                }]
+                                                            }
+                                                        ]
+                                                    };
+                                                    timeTicket = setInterval(function () {
+                                                        // option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+                                                        gCharts[chrt].setOption(option, true);
+                                                    }, 2000)
+                                                    // use configuration item and data specified to show chart
+                                                    gCharts[chrt].setOption(option, true), $(function () {
+                                                        function resize() {
+                                                            setTimeout(function () {
+                                                                gCharts[chrt].resize()
+                                                            }, 100)
+                                                        }
+                                                        $(window).on("resize", resize), $(".sidebartoggler").on("click", resize)
+                                                    });
+                    
+                                                    break;
+                                                }
+                                                case '3' : {
+                                                    option = {
+                                                        tooltip: {
+                                                            formatter: "{a} <br/>{b} : {c}%"
+                                                        }
+                                                        , toolbox: {
+                                                            show: false
+                                                            , feature: {
+                                                                mark: {
+                                                                    show: true
+                                                                }
+                                                                , restore: {
+                                                                    show: true
+                                                                }
+                                                                , saveAsImage: {
+                                                                    show: true
+                                                                }
+                                                            }
+                                                        }
+                                                        , series: [
+                                                            {
+                                                                name: '', 
+                                                                type: 'gauge',
+                                                                splitNumber: 0, // 分割段数，默认为5
+                                                                axisLine: { // 坐标轴线
+                                                                    lineStyle: { // 属性lineStyle控制线条样式
+                                                                        color: [[0.2, '#785ff3'], [0.8, '#8c76f9'], [1, '#9e8bfe']], 
+                                                                        width: 20
+                                                                    }
+                                                                }
+                                                                , axisTick: { // 坐标轴小标记
+                                                                    splitNumber: 0, // 每份split细分多少段
+                                                                    length: 12, // 属性length控制线长
+                                                                    lineStyle: { // 属性lineStyle控制线条样式
+                                                                        color: 'auto'
+                                                                    }
+                                                                }
+                                                                , axisLabel: { // 坐标轴文本标签，详见axis.axisLabel
+                                                                    textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                                                        color: 'auto'
+                                                                    }
+                                                                }
+                                                                , splitLine: { // 分隔线
+                                                                    show: false, // 默认显示，属性show控制显示与否
+                                                                    length: 50, // 属性length控制线长
+                                                                    lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+                                                                        color: 'auto'
+                                                                    }
+                                                                }
+                                                                , pointer: {
+                                                                    width: 5
+                                                                    , color: '#54667a'
+                                                                }
+                                                                , title: {
+                                                                    show: false
+                                                                    , offsetCenter: [0, '-40%'], // x, y，单位px
+                                                                    textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                                                        fontWeight: 'bolder'
+                                                                    }
+                                                                }
+                                                                , detail: {
+                                                                    textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                                                        color: 'auto'
+                                                                        , fontSize: '14'
+                                                                        , fontWeight: 'bolder'
+                                                                    }
+                                                                }
+                                                                , data: [{
+                                                                    value: parseInt(dve.canbus.engine_speed), 
+                                                                    name: 'Eng Speed'
+                                                                }]
+                                                            }
+                                                        ]
+                                                    };
+                                                    timeTicket = setInterval(function () {
+                                                        // option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+                                                        gCharts[chrt].setOption(option, true);
+                                                    }, 2000)
+                                                    // use configuration item and data specified to show chart
+                                                    gCharts[chrt].setOption(option, true), $(function () {
+                                                        function resize() {
+                                                            setTimeout(function () {
+                                                                gCharts[chrt].resize()
+                                                            }, 100)
+                                                        }
+                                                        $(window).on("resize", resize), $(".sidebartoggler").on("click", resize)
+                                                    });
+                    
+                                                    break;
+                                                }
+                                                default:{
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                                
+                    
+                                
+                                
+                    
+                                break;
+                            }
+                            case 'power_others': {
+                                var crds = document.getElementsByClassName(canbus_cat.value);
+                                for(crd in crds){
+                                    if(crd < crds.length){
+                                        crds[crd].style.display = 'flex';
+                                    }
+                                    
+                                };
+                                break;
+                            }
+                            default: {
+                                var crds = document.getElementsByClassName('canbus');
+                                for(crd in crds){
+                                    if(crd < crds.length){
+                                        crds[crd].style.display = 'flex';
+                                    }
+                                    
+                                };
+                                break;
+                            }
+                        }
+    
+                        var healthStatus = 100;
+                        if(dve.carmd.decode !== undefined){
+                            carmd_make.innerText = dve.carmd.decode.make;
+                            carmd_model.innerText = dve.carmd.decode.model;
+                            carmd_year.innerText = dve.carmd.decode.year;
+                            carmd_trans.innerText = dve.carmd.decode.transmission;
+                            carmd_manu.innerText = dve.carmd.decode.manufacturer;
+                            carmd_engine.innerText = dve.carmd.decode.engine;
+                            carmd_mkmod.innerText = dve.carmd.decode.make + " " + dve.carmd.decode.model;
+                            carmd_yr.innerText = dve.carmd.decode.year;
+                            carmd_mk.innerText = dve.carmd.decode.make;
+                        }
+                        else{
+                            carmd_make.innerText = 'Not Set';
+                            carmd_model.innerText = 'Not Set';
+                            carmd_year.innerText = 'Not Set';
+                            carmd_trans.innerText = 'Not Set';
+                            carmd_manu.innerText = 'Not Set';
+                            carmd_engine.innerText = 'Not Set';
+                            carmd_mkmod.innerText = 'Not Set';
+                            carmd_yr.innerText = 'Not Set';
+                            carmd_mk.innerText = 'Not Set';
+                        }
+                        if(dve.carmd.repair !== undefined){
+                            healthStatus -= 15;
+                            recvderr.innerText = dve.carmd.repair.desc;
+                            recvderrcond.innerText = "Urgency: " + dve.carmd.repair.urgency;
+                            recvdsum.innerText = dve.carmd.repair.urgency_desc;
+                            difficulty.innerText = "Difficulty: " + dve.carmd.repair.difficulty;
+                            hours.innerText = "Hours: " + dve.carmd.repair.hours;
+                            labour_cst.innerText = "Est. Labour Cost: " + dve.carmd.repair.labor_cost;
+                            part_cst.innerText = "Est. Part Cost: " + dve.carmd.repair.part_cost;
+                            total_cst.innerText = "Est. Total Cost: " + dve.carmd.repair.total_cost;
+                            partnos.innerText = dve.carmd.repair.parts.length;
+                            var html_parts = '';
+                            for(var i = 0; i < dve.carmd.repair.parts.length; i++){
+                                
+                                html_parts += `<div class="col-lg-4"><div class="card card-body"><div class="d-flex flex-row"><div class="round round-lg align-self-center round-danger"><i class="mdi mdi-car-settings"></i></div><div class="m-l-10 align-self-center"><h3 class="m-b-0 font-light">`;
+                                html_parts += dve.carmd.repair.parts[i].desc;
+                                html_parts += `</h3><h5 class="text-muted m-b-0">`;
+                                html_parts +=  "$" + dve.carmd.repair.parts[i].price;
+                                html_parts += `</h5></div></div></div></div>`;
+                            }
+                            partsno.innerHTML = html_parts;
+        
+                        }
+    
+    
+                        if(parseInt(dve.canbus.coolant_temp) > 100){
+                            cooling_sys.innerText = 'Needs Checking';
+                            healthStatus -= 15;
+                        }
+                        else{
+                            cooling_sys.innerText = 'Working Fine';
+                        }
+    
+                        if(parseInt(dve.canbus.current_error_code_nos) >= 1){
+                            healthStatus -= 10;
+                            errcodno.innerHTML = dve.canbus.current_error_code_nos;
+                            var flty = document.getElementsByClassName('faulty');
+                            for(var i = 0; i < flty.length; i++){
+                                flty[i].style.display = 'block !important';
+                            }
+                            if(dve.error_code !== undefined){
+                                er.innerHTML = dve.error_code.split(',')[0];
+                                var elem_opti = document.createElement('option');
+                                elem_opti.value = dve.error_code.split(',')[0];
+                                elem_opti.innerHTML = dve.error_code.split(',')[0];
+                                error_cdes.innerHTML = elem_opti.selected;
+        
+                                for(var i = 1; i < dve.error_code.split(',').length; i++){
+                                    var elem_opt = document.createElement('option');
+                                    elem_opt.value = dve.error_code.split(',')[i];
+                                    elem_opt.innerHTML = dve.error_code.split(',')[i];
+                                    error_cdes.innerHTML += elem_opt;
+                                }
+                                errecv.innerHTML = dve.canbus.date;
+                                engine_health.innerText = 'Not So Great';
+                                maint.innerText = 'Needed Urgently';
+                            }
+                            
+        
+                            
+                            
+        
+                        }
+                        else{
+                            engine_health.innerText = 'Okay'
+                            maint.innerText = ' This can wait';
+                            var flty = document.getElementsByClassName('faulty');
+                            for(var i = 0; i < flty.length; i++){
+                                flty[i].style.display = 'none' ;
+                            }
+                            recvderr.innerText = 'No Errors';
+                            recvderrcond.innerText = 0;
+                            recvdsum.innerText = 'Your Vehicle Seems Ok';
+                        }
+        
+                        if(parseInt(dve.canbus.battery_voltage) < 10){
+                            healthStatus -= 5;
+                            power.innerText = 'Needs Checking';
+                        }
+                        else{
+                            power.innerText = 'All Good Here';
+                        }
+    
+                        if(healthStatus > 70 && healthStatus <= 100){
+                            healthStats.innerText = 'Healthy ' + healthStatus + '%';
+                        }
+                        else if(healthStatus > 50 && healthStatus <= 70){
+                            healthStats.innerText = 'Not So Good ' + healthStatus + '%';
+                        }
+                        else if(healthStatus > 30 && healthStatus <= 50){
+                            healthStats.innerText = 'Bad ' + healthStatus + '%';
+                        }
+                        else{
+                            healthStats.innerText = 'Terrible ' + healthStatus + '%';
+                        }
+                        
+                        
+                        console.log(healthStatus);
+                        new Chartist.Pie('.ct-chart', {
+                            series: [healthStatus, 100-healthStatus]
+                        }, {
+                            donut: true
+                            , donutWidth: 20
+                            , startAngle: 0
+                            , showLabel: false
+                        });
+    
+    
+                    }
+                    else{
+                        
+                    }
+    
+                    if(dve["driver behavior"] !== 'Unavailable'){
+                        namign.innerText = dve["driver behavior"].total_ignition_no;
+                        namdrivtim.innerText = dve["driver behavior"].total_driving_time;
+                        namidltim.innerText = dve["driver behavior"].total_idling_time;
+                        namhotstarts.innerText = dve["driver behavior"].average_hot_start_time;
+                        namavgspeed.innerText = dve["driver behavior"].average_speed;
+                        namhighestspeed.innerText = dve["driver behavior"].history_highest_speed;
+                        namengrotation.innerText = dve["driver behavior"].history_highest_rotation;
+                        namharshaccel.innerText = dve["driver behavior"].total_harsh_acceleration_no;
+                        namharshbraking.innerText = dve["driver behavior"].total_harsh_brake_no;
+                        $("#namignbar").addClass("label-info");
+                        $("#namdrivtimbar").addClass("label-info");
+                        $("#namidltimbar").addClass("label-info");
+                        $("#namhotstartsbar").addClass("label-info");
+                        $("#namavgspeedbar").addClass("label-info");
+                        $("#namhighestspeedbar").addClass("label-info");
+                        $("#namengrotationbar").addClass("label-info");
+                        $("#namharshaccelbar").addClass("label-info");
+                        $("#namharshbrakingbar").addClass("label-info");
+                        namignbar.innerText = "Normal";
+                        namdrivtimbar.innerText = "Normal";
+                        namidltimbar.innerText = "Normal";
+                        namhotstartsbar.innerText = "Normal";
+                        namavgspeedbar.innerText = "Normal";
+                        namhighestspeedbar.innerText = "Normal";
+                        namengrotationbar.innerText = "Normal";
+                        namharshaccelbar.innerText = "Normal";
+                        namharshbrakingbar.innerText = "Normal";
+    
+                    }
+                    else{
+                        
+                    }
 
                     
                 
