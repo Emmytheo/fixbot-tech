@@ -917,6 +917,11 @@ if(login()){
                     strokeWeight: 3,
                 });
                 poly.setMap(map);
+                var carimg = "./fixbotimg/car.jpg";
+                if(dve.carmd.image !== undefined){
+                    carimg = dve.carmd.image.image;
+                }
+                
                 
                 const contentString =
                     '<div style="max-width: 400px ">' +
@@ -927,7 +932,7 @@ if(login()){
                     
                     '<div id="bodyContent">' +
                     '<div class="d-flex flex-row">' +
-                            '<div class="card" style="max-width: 30%; border-radius: 20px; overflow: hidden; padding: 1px; margin-right: 20px;"><img src="./fixbotimg/car.jpg" ></div>' +
+                            `<div class="card" style="max-width: 30%; border-radius: 20px; overflow: hidden; padding: 1px; margin-right: 20px;"><img src=${carimg}></div>` +
                                 '<div class="m-l-10 align-self-center">' +
                                     '<h3 class="m-b-0 font-lgiht">Your Car</h3>' +
                                     '<h5 class="text-muted m-b-0">Your Car\'s current location </h5>' +
@@ -1088,7 +1093,9 @@ if(login()){
                     
                     
                     dve = dat.devices[0]["Device data"];
-        
+                    if(dve.carmd.image !== undefined){
+                        carimg = dve.carmd.image.image;
+                    }
                     
                     // map = new google.maps.Map(document.getElementById("map"), {
                     //     center: { lat: 10, lng: 10 },
@@ -1104,7 +1111,7 @@ if(login()){
                         
                         '<div id="bodyContent">' +
                         '<div class="d-flex flex-row">' +
-                                '<div class="card" style="max-width: 30%; border-radius: 20px; overflow: hidden; padding: 1px; margin-right: 20px;"><img src="./fixbotimg/car.jpg" ></div>' +
+                            `<div class="card" style="max-width: 30%; border-radius: 20px; overflow: hidden; padding: 1px; margin-right: 20px;"><img src=${carimg}></div>` +
                                     '<div class="m-l-10 align-self-center">' +
                                         '<h3 class="m-b-0 font-lgiht">Your Car</h3>' +
                                         '<h5 class="text-muted m-b-0">Your Car\'s current location </h5>' +
@@ -1253,6 +1260,7 @@ if(login()){
                 var partnos = document.getElementById('partnos');
                 var partsno = document.getElementById('partsno');
                 var healthStats = document.getElementById('healthStatus');
+                var car_imgs = document.getElementsByClassName('car_img');
 
 
                 var gCharts = [];
@@ -1795,6 +1803,12 @@ if(login()){
                         }
                         partsno.innerHTML = html_parts;
     
+                    }
+                    if(dve.carmd.image !== undefined){
+                        for(var i = 0; i < car_imgs.length; i++){
+                            car_imgs[i].src = dve.carmd.image.image;
+                        }
+                        
                     }
 
 
