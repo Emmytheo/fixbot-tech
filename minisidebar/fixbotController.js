@@ -1078,7 +1078,7 @@ if(login()){
                     var dev = document.getElementById('pointer');
                     var stat = document.getElementById('status');
                     dev.style.background = "green";
-                    if((dve.canbus.location.latitude !== dat.devices[0]["Device data"].canbus.location.latitude || dve.canbus.location.longitude !== dat.devices[0]["Device data"].canbus.location.longitude) == true || parseInt(dat.devices[0]["Device data"].canbus.running_speed) !== 0){
+                    if((dve.location.latitude !== dat.devices[0]["Device data"].location.latitude || dve.location.longitude !== dat.devices[0]["Device data"].location.longitude) == true || parseInt(dat.devices[0]["Device data"].canbus.running_speed) !== 0){
                         stat.innerText = "Online and Moving";
                     }
                     else{
